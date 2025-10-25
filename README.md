@@ -6,6 +6,7 @@ A web-based platform that helps patients understand their medical conditions and
 
 MedWise AI addresses the critical issue of rushed medical decisions that often lead to unnecessary surgeries and patient trauma. By providing AI-powered analysis in simple language, we empower patients to ask the right questions and explore all available options before proceeding with invasive treatments.
 
+
 ## Features
 
 - **Symptom Analysis** - Describe your condition in plain language
