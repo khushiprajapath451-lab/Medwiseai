@@ -12,17 +12,21 @@ st.set_page_config(
 )
 
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
+    /* Main page background - Black */
     .stApp {
-        background-color: #ffffff;
+        background-color: #000000;
     }
     
+    /* Main content area - Black */
     .main {
-        background-color: #ffffff;
+        background-color: #000000;
         padding: 2rem;
     }
     
+    /* Sidebar background - Avocado */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #568203 0%, #6a9b05 100%);
     }
@@ -31,6 +35,7 @@ st.markdown("""
         color: #ffffff !important;
     }
     
+    /* Header styling - Avocado background with White text */
     .main-header {
         font-size: 2.8rem;
         font-weight: 700;
@@ -43,6 +48,7 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
+    /* Subheader - White text on avocado */
     .sub-header {
         font-size: 1.2rem;
         color: #ffffff !important;
@@ -51,42 +57,86 @@ st.markdown("""
         background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
         padding: 1rem;
         border-radius: 0 0 1rem 1rem;
-        border-bottom: 4px solid #000000;
+        border-bottom: 4px solid #568203;
     }
     
+    /* Remove disclaimer box */
     .disclaimer-box {
         display: none !important;
     }
     
-    .risk-high, .risk-medium, .risk-low, .info-card, .emergency-alert {
-        background-color: #ffffff;
-        border: 2px solid #e5e7eb;
+    /* Risk level cards - Dark with colored borders */
+    .risk-high {
+        background-color: #1a1a1a;
+        border: 2px solid #dc2626;
+        border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
     }
     
-    .risk-high {
-        border-left: 5px solid #dc2626;
+    .risk-high h2, .risk-high p, .risk-high strong {
+        color: #ffffff !important;
     }
     
     .risk-medium {
+        background-color: #1a1a1a;
+        border: 2px solid #f59e0b;
         border-left: 5px solid #f59e0b;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+    }
+    
+    .risk-medium h2, .risk-medium p, .risk-medium strong {
+        color: #ffffff !important;
     }
     
     .risk-low {
+        background-color: #1a1a1a;
+        border: 2px solid #10b981;
         border-left: 5px solid #10b981;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
     }
     
+    .risk-low h2, .risk-low p, .risk-low strong {
+        color: #ffffff !important;
+    }
+    
+    /* Info cards - Dark with avocado border */
     .info-card {
+        background-color: #1a1a1a;
         border: 2px solid #568203;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
+    .info-card h3, .info-card p, .info-card li, .info-card strong {
+        color: #ffffff !important;
+    }
+    
+    /* Emergency alert */
     .emergency-alert {
+        background-color: #2a0000;
         border: 3px solid #dc2626;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.4);
     }
     
+    .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
+        color: #ffffff !important;
+    }
+    
+    /* Primary button - Avocado */
     .stButton>button {
         background: linear-gradient(135deg, #568203 0%, #6a9b05 100%);
         color: #ffffff !important;
@@ -95,102 +145,169 @@ st.markdown("""
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.4);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
         background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
+        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.6);
         transform: translateY(-2px);
     }
     
+    /* Text input areas */
     .stTextArea textarea {
         border: 2px solid #568203;
         border-radius: 0.5rem;
-        background-color: #ffffff;
-        color: #000000 !important;
+        background-color: #1a1a1a;
+        color: #ffffff !important;
+    }
+    
+    .stTextArea textarea::placeholder {
+        color: #999999;
+    }
+    
+    .stTextArea textarea:focus {
+        border-color: #6a9b05;
+        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.3);
     }
     
     .stTextArea label {
-        color: #000000 !important;
+        color: #ffffff !important;
         font-weight: 500;
     }
     
+    /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #f9fafb;
+        background-color: #1a1a1a;
+        border-radius: 0.5rem;
         border: 1px solid #568203;
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
-    .stSuccess, .stInfo, .stWarning, .stError {
-        color: #000000 !important;
+    /* Success boxes */
+    .stSuccess {
+        background-color: #0a2a0a;
+        border-left: 4px solid #10b981;
+        color: #ffffff !important;
     }
     
-    .stSuccess p, .stInfo p, .stWarning p, .stError p {
-        color: #000000 !important;
+    .stSuccess p, .stSuccess strong {
+        color: #ffffff !important;
     }
     
+    /* Info boxes */
+    .stInfo {
+        background-color: #0a1a2a;
+        border-left: 4px solid #3b82f6;
+        color: #ffffff !important;
+    }
+    
+    .stInfo p, .stInfo strong {
+        color: #ffffff !important;
+    }
+    
+    /* Warning boxes */
+    .stWarning {
+        background-color: #2a1a00;
+        border-left: 4px solid #f59e0b;
+        color: #ffffff !important;
+    }
+    
+    .stWarning p, .stWarning strong {
+        color: #ffffff !important;
+    }
+    
+    /* Error boxes */
+    .stError {
+        background-color: #2a0a0a;
+        border-left: 4px solid #dc2626;
+        color: #ffffff !important;
+    }
+    
+    .stError p, .stError strong {
+        color: #ffffff !important;
+    }
+    
+    /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
         background-color: #568203;
         color: #ffffff;
     }
     
     .stMultiSelect label {
-        color: #000000 !important;
+        color: #ffffff !important;
+        font-weight: 500;
+    }
+    
+    /* Radio buttons */
+    .stRadio > label {
+        background-color: #1a1a1a;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: #ffffff !important;
+        border: 1px solid #568203;
     }
     
     .stRadio label {
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
+    /* Selectbox */
     .stSelectbox label {
-        color: #000000 !important;
+        color: #ffffff !important;
+        font-weight: 500;
     }
     
-    /* FORCE ALL TEXT TO BLACK */
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #1a1a1a;
+        border-color: #568203;
+        color: #ffffff;
+    }
+    
+    /* FORCE ALL TEXT TO WHITE on black background */
     .main, .main * {
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
     .main p, .main span, .main div, .main li {
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
     .main strong, .main b {
-        color: #000000 !important;
+        color: #ffffff !important;
     }
     
     .main [data-testid="stMarkdownContainer"], 
     .main [data-testid="stMarkdownContainer"] *,
     .main [data-testid="stMarkdownContainer"] p,
     .main [data-testid="stMarkdownContainer"] span {
-        color: #000000 !important;
-    }
-    
-    /* Exception: Keep header and subheader white text */
-    .main-header, .main-header * {
         color: #ffffff !important;
     }
     
-    .sub-header, .sub-header * {
+    /* Horizontal rule - Avocado */
+    .main hr {
+        border: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0%, #568203 50%, transparent 100%);
+        margin: 2rem 0;
+    }
+    
+    /* Footer styling */
+    .main div[style*="text-align: center"] {
         color: #ffffff !important;
     }
     
-    /* Exception: Keep sidebar white text */
-    [data-testid="stSidebar"], [data-testid="stSidebar"] * {
-        color: #ffffff !important;
-    }
-    
-    /* Exception: Keep button text white */
-    .stButton>button, .stButton>button * {
+    .main div[style*="text-align: center"] p {
         color: #ffffff !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
@@ -406,19 +523,19 @@ def main():
     st.markdown('<h1 class="main-header">MedWise AI</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Medical Awareness Platform - Make Informed Healthcare Decisions</p>', unsafe_allow_html=True)
     
-    # Disclaimer
-  #  st.markdown('<div class="disclaimer-box">', unsafe_allow_html=True)
-   # st.markdown("""
-    #**IMPORTANT MEDICAL DISCLAIMER**
+    #Disclaimer
+   st.markdown('<div class="disclaimer-box">', unsafe_allow_html=True)
+   st.markdown("""
+    **IMPORTANT MEDICAL DISCLAIMER**
     
-   # MedWise AI is an educational tool and NOT a substitute for professional medical advice, diagnosis, or treatment.
+   MedWise AI is an educational tool and NOT a substitute for professional medical advice, diagnosis, or treatment.
     
-   # - Always consult qualified healthcare providers for medical decisions
-    #- Never disregard professional medical advice
-   # - Call emergency services immediately if you have a medical emergency
-   # - This analysis is for informational and awareness purposes only
-   # """)
-   # st.markdown('</div>', unsafe_allow_html=True)
+    - Always consult qualified healthcare providers for medical decisions
+    - Never disregard professional medical advice
+    - Call emergency services immediately if you have a medical emergency
+    - This analysis is for informational and awareness purposes only
+    """)
+    st.markdown('</div>', unsafe_allow_html=True)
     
     # Sidebar
     with st.sidebar:
