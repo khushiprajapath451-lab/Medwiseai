@@ -17,70 +17,83 @@ st.set_page_config(
 # Custom CSS
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - Dark Burgundy */
+    /* Main page background - White */
     .stApp {
-        background: linear-gradient(180deg, #4A002A 0%, #5a0033 100%);
+        background-color: #ffffff;
     }
     
-    /* Main content area - Pale Pink */
+    /* Main content area - White */
     .main {
-        background-color: #F1E9E9;
+        background-color: #ffffff;
         padding: 2rem;
         color: #000000;
     }
     
-    /* Sidebar background - Dark Burgundy */
+    /* Sidebar background - Avocado */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #4A002A 0%, #3a0020 100%);
+        background: linear-gradient(180deg, #568203 0%, #6a9b05 100%);
     }
     
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
-        color: #F1E9E9;
+        color: #ffffff;
     }
     
     [data-testid="stSidebar"] h2 {
-        color: #F1E9E9;
+        color: #ffffff;
         font-weight: 600;
     }
     
     [data-testid="stSidebar"] p {
-        color: #F1E9E9;
+        color: #ffffff;
     }
     
-    /* Header styling - Dark Burgundy background with Pale Pink text */
+    /* Header styling - Avocado background with White text */
     .main-header {
         font-size: 2.8rem;
         font-weight: 700;
-        color: #F1E9E9;
+        color: #ffffff;
         text-align: center;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #4A002A 0%, #5a0033 100%);
+        margin-bottom: 0rem;
+        background: linear-gradient(135deg, #568203 0%, #6a9b05 100%);
         padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0 8px 16px rgba(74, 0, 42, 0.4);
+        border-radius: 1rem 1rem 0 0;
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
+    /* Subheader - White text on avocado */
     .sub-header {
         font-size: 1.2rem;
-        color: #000000;
+        color: #ffffff;
         text-align: center;
-        margin-bottom: 2rem;
-        background-color: #F1E9E9;
+        margin-bottom: 0rem;
+        background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
         padding: 1rem;
-        border-radius: 0.75rem;
-        border: 2px solid #4A002A;
+        border-radius: 0 0 1rem 1rem;
+        border-bottom: 4px solid #000000;
+        margin-bottom: 2rem;
     }
     
-    /* Risk level cards */
+    /* Divider line between header and content */
+    .main > div:first-child::after {
+        content: '';
+        display: block;
+        height: 3px;
+        background: linear-gradient(90deg, #568203 0%, #6a9b05 50%, #568203 100%);
+        margin: 2rem 0;
+    }
+    
+    /* Risk level cards - White background with colored borders */
     .risk-high {
-        background-color: #ffe5e5;
+        background-color: #ffffff;
+        border: 2px solid #dc2626;
         border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-high h2, .risk-high p, .risk-high strong {
@@ -88,12 +101,13 @@ st.markdown("""
     }
     
     .risk-medium {
-        background-color: #fff5e5;
+        background-color: #ffffff;
+        border: 2px solid #f59e0b;
         border-left: 5px solid #f59e0b;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-medium h2, .risk-medium p, .risk-medium strong {
@@ -101,40 +115,41 @@ st.markdown("""
     }
     
     .risk-low {
-        background-color: #e5f9e9;
+        background-color: #ffffff;
+        border: 2px solid #10b981;
         border-left: 5px solid #10b981;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-low h2, .risk-low p, .risk-low strong {
         color: #000000;
     }
     
-    /* Disclaimer box */
+    /* Remove disclaimer box background - make it clean */
     .disclaimer-box {
-        background-color: #fff0f0;
-        border: 2px solid #fca5a5;
+        background-color: transparent;
+        border: 2px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 2rem 0;
-        box-shadow: 0 4px 8px rgba(252, 165, 165, 0.2);
+        box-shadow: none;
     }
     
     .disclaimer-box p, .disclaimer-box strong {
         color: #000000;
     }
     
-    /* Info cards - Light pink with burgundy border */
+    /* Info cards - White with avocado border */
     .info-card {
-        background-color: #fdf5f5;
-        border: 2px solid #4A002A;
+        background-color: #ffffff;
+        border: 2px solid #568203;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(74, 0, 42, 0.15);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
@@ -143,48 +158,48 @@ st.markdown("""
     
     /* Emergency alert */
     .emergency-alert {
-        background-color: #ffe5e5;
+        background-color: #fff5f5;
         border: 3px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
         color: #000000;
     }
     
-    /* Primary button - Dark Burgundy */
+    /* Primary button - Avocado */
     .stButton>button {
-        background: linear-gradient(135deg, #4A002A 0%, #5a0033 100%);
-        color: #F1E9E9;
+        background: linear-gradient(135deg, #568203 0%, #6a9b05 100%);
+        color: #ffffff;
         font-weight: 600;
         padding: 0.75rem 2rem;
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 8px rgba(74, 0, 42, 0.3);
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
-        background: linear-gradient(135deg, #5a0033 0%, #6a0040 100%);
-        box-shadow: 0 6px 12px rgba(74, 0, 42, 0.4);
+        background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
+        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.4);
         transform: translateY(-2px);
     }
     
     /* Text input areas */
     .stTextArea textarea {
-        border: 2px solid #4A002A;
+        border: 2px solid #568203;
         border-radius: 0.5rem;
         background-color: #ffffff;
         color: #000000;
     }
     
     .stTextArea textarea:focus {
-        border-color: #6a0040;
-        box-shadow: 0 0 0 3px rgba(74, 0, 42, 0.2);
+        border-color: #6a9b05;
+        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.2);
     }
     
     .stTextArea label {
@@ -194,16 +209,16 @@ st.markdown("""
     
     /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #fdf5f5;
+        background-color: #f9fafb;
         border-radius: 0.5rem;
-        border: 1px solid #4A002A;
+        border: 1px solid #568203;
         color: #000000;
     }
     
     /* Success boxes */
     .stSuccess {
-        background-color: #e5f9e9;
-        border-left: 4px solid #10b981;
+        background-color: #f0fdf4;
+        border-left: 4px solid #568203;
         color: #000000;
     }
     
@@ -213,8 +228,8 @@ st.markdown("""
     
     /* Info boxes */
     .stInfo {
-        background-color: #e0f2fe;
-        border-left: 4px solid #0ea5e9;
+        background-color: #eff6ff;
+        border-left: 4px solid #3b82f6;
         color: #000000;
     }
     
@@ -224,7 +239,7 @@ st.markdown("""
     
     /* Warning boxes */
     .stWarning {
-        background-color: #fff5e5;
+        background-color: #fffbeb;
         border-left: 4px solid #f59e0b;
         color: #000000;
     }
@@ -235,7 +250,7 @@ st.markdown("""
     
     /* Error boxes */
     .stError {
-        background-color: #ffe5e5;
+        background-color: #fef2f2;
         border-left: 4px solid #dc2626;
         color: #000000;
     }
@@ -246,8 +261,8 @@ st.markdown("""
     
     /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
-        background-color: #4A002A;
-        color: #F1E9E9;
+        background-color: #568203;
+        color: #ffffff;
     }
     
     .stMultiSelect label {
@@ -257,11 +272,11 @@ st.markdown("""
     
     /* Radio buttons */
     .stRadio > label {
-        background-color: #fdf5f5;
+        background-color: #f9fafb;
         padding: 0.5rem;
         border-radius: 0.5rem;
         color: #000000;
-        border: 1px solid #4A002A;
+        border: 1px solid #e5e7eb;
     }
     
     .stRadio label {
@@ -276,7 +291,7 @@ st.markdown("""
     
     .stSelectbox [data-baseweb="select"] {
         background-color: #ffffff;
-        border-color: #4A002A;
+        border-color: #568203;
     }
     
     /* All paragraph text - Black */
@@ -294,9 +309,10 @@ st.markdown("""
         color: #000000;
     }
     
-    /* Strong/Bold text - Dark Burgundy for emphasis */
+    /* Strong/Bold text - Avocado for emphasis */
     .main strong {
-        color: #4A002A;
+        color: #568203;
+        font-weight: 600;
     }
     
     /* Markdown text - Black */
@@ -304,9 +320,12 @@ st.markdown("""
         color: #000000;
     }
     
-    /* Horizontal rule */
+    /* Horizontal rule - Avocado */
     .main hr {
-        border-color: #4A002A;
+        border: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent 0%, #568203 50%, transparent 100%);
+        margin: 2rem 0;
     }
     
     /* Footer styling */
