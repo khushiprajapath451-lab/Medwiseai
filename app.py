@@ -12,19 +12,21 @@ st.set_page_config(
 )
 
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - White */
+    /* Main page background - Black */
     .stApp {
-        background-color: #ffffff;
+        background-color: #000000;
     }
     
+    /* Main content area - Black */
     .main {
-        background-color: #ffffff;
+        background-color: #000000;
         padding: 2rem;
     }
     
-    /* Sidebar - Avocado */
+    /* Sidebar background - Avocado */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #568203 0%, #6a9b05 100%);
     }
@@ -33,7 +35,7 @@ st.markdown("""
         color: #ffffff !important;
     }
     
-    /* Header - Avocado */
+    /* Header styling - Avocado background with White text */
     .main-header {
         font-size: 2.8rem;
         font-weight: 700;
@@ -46,6 +48,7 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
+    /* Subheader - White text on avocado */
     .sub-header {
         font-size: 1.2rem;
         color: #ffffff !important;
@@ -57,95 +60,83 @@ st.markdown("""
         border-bottom: 4px solid #568203;
     }
     
-    /* KEEP BLUE BACKGROUND, CHANGE TEXT TO GRAY */
-    .stAlert p,
-    .stAlert div,
-    .stAlert span,
-    .stAlert strong,
-    .stAlert li,
-    [data-testid="stAlert"] p,
-    [data-testid="stAlert"] div,
-    [data-testid="stAlert"] span,
-    [data-testid="stAlert"] strong,
-    [data-testid="stAlert"] li {
-        color: #4b5563 !important;
-    }
-    
-    /* Info boxes - KEEP BLUE, TEXT GRAY */
-    .stInfo p,
-    .stInfo div,
-    .stInfo span,
-    .stInfo strong,
-    .stInfo li,
-    [data-testid="stInfo"] p,
-    [data-testid="stInfo"] div,
-    [data-testid="stInfo"] span,
-    [data-testid="stInfo"] strong,
-    [data-testid="stInfo"] li {
-        color: #4b5563 !important;
-    }
-    
     /* Remove disclaimer box */
     .disclaimer-box {
         display: none !important;
     }
     
-    /* Risk cards */
-    .risk-high, .risk-medium, .risk-low {
-        background-color: #ffffff;
-        border: 2px solid #e5e7eb;
+    /* Risk level cards - Dark with colored borders */
+    .risk-high {
+        background-color: #1a1a1a;
+        border: 2px solid #dc2626;
+        border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
     }
     
-    .risk-high {
-        border-left: 5px solid #dc2626;
+    .risk-high h2, .risk-high p, .risk-high strong {
+        color: #ffffff !important;
     }
     
     .risk-medium {
+        background-color: #1a1a1a;
+        border: 2px solid #f59e0b;
         border-left: 5px solid #f59e0b;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+    }
+    
+    .risk-medium h2, .risk-medium p, .risk-medium strong {
+        color: #ffffff !important;
     }
     
     .risk-low {
+        background-color: #1a1a1a;
+        border: 2px solid #10b981;
         border-left: 5px solid #10b981;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
     }
     
-    .risk-high h2, .risk-high p, .risk-high strong,
-    .risk-medium h2, .risk-medium p, .risk-medium strong,
     .risk-low h2, .risk-low p, .risk-low strong {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
-    /* Info cards */
+    /* Info cards - Dark with avocado border */
     .info-card {
-        background-color: #ffffff;
+        background-color: #1a1a1a;
         border: 2px solid #568203;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
     /* Emergency alert */
     .emergency-alert {
-        background-color: #fff5f5;
+        background-color: #2a0000;
         border: 3px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
+        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.4);
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
-    /* Buttons - Avocado */
+    /* Primary button - Avocado */
     .stButton>button {
         background: linear-gradient(135deg, #568203 0%, #6a9b05 100%);
         color: #ffffff !important;
@@ -154,129 +145,169 @@ st.markdown("""
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.4);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
         background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
+        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.6);
         transform: translateY(-2px);
     }
     
-    /* Text input */
+    /* Text input areas */
     .stTextArea textarea {
         border: 2px solid #568203;
         border-radius: 0.5rem;
-        background-color: #ffffff;
-        color: #4b5563 !important;
+        background-color: #1a1a1a;
+        color: #ffffff !important;
     }
     
     .stTextArea textarea::placeholder {
-        color: #9ca3af;
+        color: #999999;
+    }
+    
+    .stTextArea textarea:focus {
+        border-color: #6a9b05;
+        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.3);
     }
     
     .stTextArea label {
-        color: #4b5563 !important;
+        color: #ffffff !important;
         font-weight: 500;
     }
     
-    /* Expander - KEEP BACKGROUND, TEXT GRAY */
+    /* Expander styling */
     .streamlit-expanderHeader {
-        color: #4b5563 !important;
+        background-color: #1a1a1a;
+        border-radius: 0.5rem;
+        border: 1px solid #568203;
+        color: #ffffff !important;
     }
     
-    .streamlit-expanderContent,
-    .streamlit-expanderContent * {
-        color: #4b5563 !important;
+    /* Success boxes */
+    .stSuccess {
+        background-color: #0a2a0a;
+        border-left: 4px solid #10b981;
+        color: #ffffff !important;
     }
     
-    /* Success boxes - KEEP GREEN, TEXT GRAY */
-    .stSuccess p,
-    .stSuccess div,
-    .stSuccess span,
-    .stSuccess strong {
-        color: #4b5563 !important;
+    .stSuccess p, .stSuccess strong {
+        color: #ffffff !important;
     }
     
-    /* Warning boxes - KEEP YELLOW, TEXT GRAY */
-    .stWarning p,
-    .stWarning div,
-    .stWarning span,
-    .stWarning strong {
-        color: #4b5563 !important;
+    /* Info boxes */
+    .stInfo {
+        background-color: #0a1a2a;
+        border-left: 4px solid #3b82f6;
+        color: #ffffff !important;
     }
     
-    /* Error boxes - KEEP RED, TEXT GRAY */
-    .stError p,
-    .stError div,
-    .stError span,
-    .stError strong {
-        color: #4b5563 !important;
+    .stInfo p, .stInfo strong {
+        color: #ffffff !important;
     }
     
-    /* Multiselect */
+    /* Warning boxes */
+    .stWarning {
+        background-color: #2a1a00;
+        border-left: 4px solid #f59e0b;
+        color: #ffffff !important;
+    }
+    
+    .stWarning p, .stWarning strong {
+        color: #ffffff !important;
+    }
+    
+    /* Error boxes */
+    .stError {
+        background-color: #2a0a0a;
+        border-left: 4px solid #dc2626;
+        color: #ffffff !important;
+    }
+    
+    .stError p, .stError strong {
+        color: #ffffff !important;
+    }
+    
+    /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
         background-color: #568203;
         color: #ffffff;
     }
     
     .stMultiSelect label {
-        color: #4b5563 !important;
+        color: #ffffff !important;
+        font-weight: 500;
     }
     
     /* Radio buttons */
+    .stRadio > label {
+        background-color: #1a1a1a;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        color: #ffffff !important;
+        border: 1px solid #568203;
+    }
+    
     .stRadio label {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
     /* Selectbox */
     .stSelectbox label {
-        color: #4b5563 !important;
+        color: #ffffff !important;
+        font-weight: 500;
     }
     
-    /* ALL MAIN CONTENT TEXT - GRAY */
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #1a1a1a;
+        border-color: #568203;
+        color: #ffffff;
+    }
+    
+    /* FORCE ALL TEXT TO WHITE on black background */
+    .main, .main * {
+        color: #ffffff !important;
+    }
+    
     .main p, .main span, .main div, .main li {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-        color: #4b5563 !important;
+        color: #ffffff !important;
     }
     
     .main strong, .main b {
-        color: #374151 !important;
-    }
-    
-    .main [data-testid="stMarkdownContainer"] * {
-        color: #4b5563 !important;
-    }
-    
-    /* Exceptions - Keep white text */
-    .main-header, .main-header * {
         color: #ffffff !important;
     }
     
-    .sub-header, .sub-header * {
+    .main [data-testid="stMarkdownContainer"], 
+    .main [data-testid="stMarkdownContainer"] *,
+    .main [data-testid="stMarkdownContainer"] p,
+    .main [data-testid="stMarkdownContainer"] span {
         color: #ffffff !important;
     }
     
-    [data-testid="stSidebar"], [data-testid="stSidebar"] * {
-        color: #ffffff !important;
-    }
-    
-    .stButton>button, .stButton>button * {
-        color: #ffffff !important;
-    }
-    
-    /* Horizontal rule */
+    /* Horizontal rule - Avocado */
     .main hr {
         border: 0;
         height: 2px;
         background: linear-gradient(90deg, transparent 0%, #568203 50%, transparent 100%);
         margin: 2rem 0;
     }
+    
+    /* Footer styling */
+    .main div[style*="text-align: center"] {
+        color: #ffffff !important;
+    }
+    
+    .main div[style*="text-align: center"] p {
+        color: #ffffff !important;
+    }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
