@@ -2,8 +2,6 @@ import streamlit as st
 import json
 from datetime import datetime
 import google.generativeai as genai
-from PIL import Image
-import io
 
 # Page configuration
 st.set_page_config(
@@ -105,16 +103,31 @@ def configure_gemini():
         st.error(f"Error configuring API: {str(e)}")
         st.stop()
 
+def clean_json_response(text):
+    """Clean JSON response from Gemini"""
+    # Remove markdown code blocks
+    text = text.strip()
+    
+    # Check for json code block
+    if "json" in text[:20].lower():
+        # Find first { and last }
+        start = text.find('{')
+        end = text.rfind('}')
+        if start != -1 and end != -1:
+            text = text[start:end+1]
+    
+    return text
+
 def analyze_medical_condition(user_input, model):
     """Analyze medical condition using Gemini AI"""
     
-    prompt = f"""You are a medical awareness assistant helping patients understand their health conditions better. 
+    prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
 
-User's condition description: {user_input}
+User's condition description: """ + user_input + """
 
 Provide a comprehensive analysis in the following JSON format:
 
-{{
+{
     "risk_level": "LOW/MEDIUM/HIGH",
     "urgency": "EMERGENCY/URGENT/CAN_WAIT/NON_URGENT",
     "condition_name": "Name of the likely condition",
@@ -151,7 +164,7 @@ Provide a comprehensive analysis in the following JSON format:
     ],
     "estimated_recovery_time": "Recovery timeline if treatment is pursued",
     "key_message": "One important message for the patient"
-}}
+}
 
 Important guidelines:
 - Be conservative in risk assessment (safety first)
@@ -163,18 +176,11 @@ Important guidelines:
 
     try:
         response = model.generate_content(prompt)
-        response_text = response.text
-        
-        # Clean up response text
-        if "```
-            response_text = response_text.split("```json").split("```
-        elif "```" in response_text:
-            response_text = response_text.split("``````")[0]
-        
-        result = json.loads(response_text.strip())
+        response_text = clean_json_response(response.text)
+        result = json.loads(response_text)
         return result
     except json.JSONDecodeError as e:
-        st.error(f"Error parsing response: {str(e)}")
+        st.error(f"Error parsing response. Please try again.")
         return None
     except Exception as e:
         st.error(f"Error analyzing condition: {str(e)}")
@@ -198,15 +204,15 @@ def display_analysis(result):
     
     # Risk Level Display
     risk_level = result.get('risk_level', 'MEDIUM')
-    risk_class = f"risk-{risk_level.lower()}"
+    risk_class = "risk-" + risk_level.lower()
     
-    st.markdown(f'<div class="{risk_class}">', unsafe_allow_html=True)
-    st.markdown(f"## Risk Assessment: {risk_level}")
-    st.markdown(f"**Urgency Level:** {result.get('urgency', 'Not determined')}")
+    st.markdown('<div class="' + risk_class + '">', unsafe_allow_html=True)
+    st.markdown("## Risk Assessment: " + risk_level)
+    st.markdown("**Urgency Level:** " + result.get('urgency', 'Not determined'))
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Condition Name
-    st.markdown(f"### Likely Condition: {result.get('condition_name', 'Assessment in progress')}")
+    st.markdown("### Likely Condition: " + result.get('condition_name', 'Assessment in progress'))
     
     # Simple Explanation
     st.markdown('<div class="info-card">', unsafe_allow_html=True)
@@ -222,7 +228,7 @@ def display_analysis(result):
         st.markdown('<div class="info-card">', unsafe_allow_html=True)
         st.markdown("### Surgery Assessment")
         surgery_status = result.get('surgery_needed', 'MAYBE_NEEDED')
-        st.markdown(f"**Status:** {surgery_status.replace('_', ' ').title()}")
+        st.markdown("**Status:** " + surgery_status.replace('_', ' ').title())
         st.markdown('</div>', unsafe_allow_html=True)
         
         # Consultation Advice
@@ -236,7 +242,7 @@ def display_analysis(result):
         st.markdown("### Warning Signs (Seek Immediate Care)")
         warning_signs = result.get('warning_signs', [])
         for sign in warning_signs:
-            st.markdown(f"- {sign}")
+            st.markdown("- " + sign)
         st.markdown('</div>', unsafe_allow_html=True)
     
     with col2:
@@ -245,7 +251,7 @@ def display_analysis(result):
         st.markdown("### Recommended Action Steps")
         action_steps = result.get('action_steps', [])
         for i, step in enumerate(action_steps, 1):
-            st.markdown(f"**{i}.** {step}")
+            st.markdown("**" + str(i) + ".** " + step)
         st.markdown('</div>', unsafe_allow_html=True)
         
         # Alternative Treatments
@@ -254,7 +260,7 @@ def display_analysis(result):
             st.markdown("### Alternative Treatment Options")
             alternatives = result.get('alternative_treatments', [])
             for alt in alternatives:
-                st.markdown(f"- {alt}")
+                st.markdown("- " + alt)
             st.markdown('</div>', unsafe_allow_html=True)
     
     # Questions for Doctor
@@ -262,7 +268,7 @@ def display_analysis(result):
     st.markdown("### Important Questions to Ask Your Doctor")
     questions = result.get('questions_for_doctor', [])
     for i, question in enumerate(questions, 1):
-        st.markdown(f"**Question {i}:** {question}")
+        st.markdown("**Question " + str(i) + ":** " + question)
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Lifestyle Changes
@@ -271,15 +277,16 @@ def display_analysis(result):
         st.markdown("### Recommended Lifestyle Changes")
         lifestyle = result.get('lifestyle_changes', [])
         for change in lifestyle:
-            st.markdown(f"- {change}")
+            st.markdown("- " + change)
         st.markdown('</div>', unsafe_allow_html=True)
     
     # Recovery Time
     if result.get('estimated_recovery_time'):
-        st.info(f"**Estimated Recovery Time:** {result.get('estimated_recovery_time')}")
+        st.info("**Estimated Recovery Time:** " + result.get('estimated_recovery_time'))
     
     # Key Message
-    st.success(f"**Key Takeaway:** {result.get('key_message', 'Always prioritize consulting qualified medical professionals for proper diagnosis and treatment.')}")
+    key_msg = result.get('key_message', 'Always prioritize consulting qualified medical professionals for proper diagnosis and treatment.')
+    st.success("**Key Takeaway:** " + key_msg)
 
 def main():
     # Header
@@ -324,7 +331,7 @@ def main():
         st.markdown("### Language Options")
         language = st.selectbox(
             "Select Language",
-            ["English", "हिंदी (Hindi)", "தமிழ் (Tamil)", "తెలుగు (Telugu)", "বাংলা (Bengali)"]
+            ["English", "Hindi", "Tamil", "Telugu", "Bengali"]
         )
         
         st.markdown("---")
@@ -347,7 +354,7 @@ def main():
     
     if input_method == "Type your symptoms or condition":
         st.markdown("### Describe Your Condition")
-        st.write("Please provide details about your symptoms, duration, severity, and any diagnosis you've received.")
+        st.write("Please provide details about your symptoms, duration, severity, and any diagnosis you have received.")
         
         # Example conditions
         with st.expander("View example descriptions"):
@@ -372,12 +379,12 @@ def main():
         st.markdown("#### Select related conditions (optional):")
         common_conditions = st.multiselect(
             "Common Medical Conditions",
-            ["Appendicitis", "Heart Conditions (VSD/ASD)", "Cataract", "Gallstones", 
+            ["Appendicitis", "Heart Conditions", "Cataract", "Gallstones", 
              "Hernia", "Kidney Stones", "Tonsillitis", "Dental Problems", "Joint Pain"]
         )
         
         if common_conditions:
-            user_input += f"\n\nRelated conditions: {', '.join(common_conditions)}"
+            user_input = user_input + "\n\nRelated conditions: " + ", ".join(common_conditions)
         
         # Analyze Button
         col1, col2, col3 = st.columns([1, 2, 1])
@@ -435,3 +442,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
