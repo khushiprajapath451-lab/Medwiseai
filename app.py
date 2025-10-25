@@ -12,77 +12,186 @@ st.set_page_config(
 )
 
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
+    /* Main page background - Dark teal */
+    .stApp {
+        background: linear-gradient(135deg, #0d4d4d 0%, #0a3a3a 100%);
+    }
+    
+    /* Main content area - White with slight teal tint */
+    .main {
+        background-color: #ffffff;
+        padding: 2rem;
+    }
+    
+    /* Sidebar background - Black with teal accent */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1a1a1a 0%, #0d3d3d 100%);
+    }
+    
+    [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
+        color: #ffffff;
+    }
+    
+    [data-testid="stSidebar"] h2 {
+        color: #5eead4;
+    }
+    
+    /* Header styling */
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #1e40af;
+        color: #0d9488;
         text-align: center;
         margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
+    
     .sub-header {
         font-size: 1.1rem;
-        color: #64748b;
+        color: #134e4a;
         text-align: center;
         margin-bottom: 2rem;
     }
+    
+    /* Risk level cards */
     .risk-high {
-        background-color: #fee2e2;
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
         border-left: 5px solid #dc2626;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        margin: 1rem 0;
-    }
-    .risk-medium {
-        background-color: #fef3c7;
-        border-left: 5px solid #f59e0b;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        margin: 1rem 0;
-    }
-    .risk-low {
-        background-color: #d1fae5;
-        border-left: 5px solid #10b981;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        margin: 1rem 0;
-    }
-    .disclaimer-box {
-        background-color: #fef2f2;
-        border: 2px solid #fca5a5;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        margin: 2rem 0;
-    }
-    .info-card {
-        background-color: #f8fafc;
-        border: 1px solid #e2e8f0;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
+    
+    .risk-medium {
+        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        border-left: 5px solid #f59e0b;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .risk-low {
+        background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
+        border-left: 5px solid #14b8a6;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* Disclaimer box */
+    .disclaimer-box {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        border: 2px solid #fca5a5;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    /* Info cards - Teal accent */
+    .info-card {
+        background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+        border: 2px solid #5eead4;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        margin: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: transform 0.2s;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    
+    /* Emergency alert */
     .emergency-alert {
-        background-color: #fee2e2;
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
         border: 3px solid #dc2626;
         padding: 1.5rem;
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         margin: 1.5rem 0;
+        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
     }
+    
+    /* Primary button - Teal */
     .stButton>button {
-        background-color: #1e40af;
+        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
         color: white;
         font-weight: 600;
         padding: 0.75rem 2rem;
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         border: none;
         width: 100%;
+        box-shadow: 0 4px 6px rgba(20, 184, 166, 0.3);
+        transition: all 0.3s;
     }
+    
     .stButton>button:hover {
-        background-color: #1e3a8a;
+        background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+        box-shadow: 0 6px 12px rgba(20, 184, 166, 0.4);
+        transform: translateY(-2px);
+    }
+    
+    /* Text input areas */
+    .stTextArea textarea {
+        border: 2px solid #5eead4;
+        border-radius: 0.5rem;
+    }
+    
+    .stTextArea textarea:focus {
+        border-color: #14b8a6;
+        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+    }
+    
+    /* Expander styling */
+    .streamlit-expanderHeader {
+        background-color: #f0fdfa;
+        border-radius: 0.5rem;
+        border: 1px solid #99f6e4;
+    }
+    
+    /* Success/Info/Warning boxes */
+    .stSuccess {
+        background-color: #ccfbf1;
+        border-left: 4px solid #14b8a6;
+    }
+    
+    .stInfo {
+        background-color: #e0f2fe;
+        border-left: 4px solid #0ea5e9;
+    }
+    
+    .stWarning {
+        background-color: #fef3c7;
+        border-left: 4px solid #f59e0b;
+    }
+    
+    /* Multiselect styling */
+    .stMultiSelect [data-baseweb="tag"] {
+        background-color: #14b8a6;
+    }
+    
+    /* Radio buttons */
+    .stRadio > label {
+        background-color: #f0fdfa;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+    }
+    
+    /* Footer text color adjustment */
+    .main p {
+        color: #1f2937;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 # Initialize session state
 if 'analysis_complete' not in st.session_state:
