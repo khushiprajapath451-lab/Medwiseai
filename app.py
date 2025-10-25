@@ -523,12 +523,12 @@ def main():
     st.markdown('<h1 class="main-header">MedWise AI</h1>', unsafe_allow_html=True)
     st.markdown('<p class="sub-header">Medical Awareness Platform - Make Informed Healthcare Decisions</p>', unsafe_allow_html=True)
     
-    #Disclaimer
-   st.markdown('<div class="disclaimer-box">', unsafe_allow_html=True)
-   st.markdown("""
+    # Disclaimer
+    st.markdown('<div class="disclaimer-box">', unsafe_allow_html=True)
+    st.markdown("""
     **IMPORTANT MEDICAL DISCLAIMER**
     
-   MedWise AI is an educational tool and NOT a substitute for professional medical advice, diagnosis, or treatment.
+    MedWise AI is an educational tool and NOT a substitute for professional medical advice, diagnosis, or treatment.
     
     - Always consult qualified healthcare providers for medical decisions
     - Never disregard professional medical advice
