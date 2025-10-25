@@ -324,31 +324,26 @@ if 'analysis_result' not in st.session_state:
     st.session_state.analysis_result = None
 
 def configure_gemini():
-    """Configure Gemini API"""
+    """Configure Gemini API - Fixed for current API version"""
     try:
         api_key = st.secrets.get("GEMINI_API_KEY", "")
         if not api_key:
             st.error("API key not found. Please add GEMINI_API_KEY to your Streamlit secrets.")
             st.stop()
         
+        # Configure with API key
+        import google.generativeai as genai
         genai.configure(api_key=api_key)
         
-        # Try the simplest working model name
-        try:
-            model = genai.GenerativeModel('gemini-1.5-flash')
-            return model
-        except:
-            try:
-                model = genai.GenerativeModel('gemini-pro')
-                return model
-            except:
-                st.error("Could not initialize Gemini model. Please check your API key.")
-                st.stop()
+        # Use the current working model name (no 'models/' prefix)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        
+        return model
         
     except Exception as e:
-        st.error(f"Error: {str(e)}")
+        st.error(f"Error configuring Gemini: {str(e)}")
+        st.error("Please create a NEW API key at: https://aistudio.google.com/app/apikey")
         st.stop()
-
 
 
 
@@ -381,7 +376,7 @@ Provide a comprehensive analysis in the following JSON format:
     "risk_level": "LOW/MEDIUM/HIGH",
     "urgency": "EMERGENCY/URGENT/CAN_WAIT/NON_URGENT",
     "condition_name": "Name of the likely condition",
-    "simple_explanation": "Explain the condition in simple, easy-to-understand language (3-4 sentences)",
+    "simple_explanation": "Explain the condition in simple, easy-to-understand language",
     "is_emergency": true/false,
     "surgery_needed": "LIKELY_NEEDED/MAYBE_NEEDED/ALTERNATIVES_AVAILABLE/NOT_NEEDED",
     "consultation_advice": "Type of specialist to consult and when",
@@ -417,20 +412,33 @@ Provide a comprehensive analysis in the following JSON format:
 }
 
 Important guidelines:
-- Be conservative in risk assessment (safety first)
-- Use simple language, avoid medical jargon
-- If it sounds like an emergency, mark it clearly
+- Be conservative in risk assessment
+- Use simple language
+- If emergency, mark clearly
 - Always encourage professional medical consultation
 - Provide balanced view of surgery vs alternatives
-- Be empathetic and supportive in tone"""
+- Be empathetic and supportive"""
 
     try:
-        response = model.generate_content(prompt)
+        # Generate content with proper configuration
+        generation_config = {
+            "temperature": 0.7,
+            "top_p": 0.95,
+            "top_k": 40,
+            "max_output_tokens": 2048,
+        }
+        
+        response = model.generate_content(
+            prompt,
+            generation_config=generation_config
+        )
+        
         response_text = clean_json_response(response.text)
         result = json.loads(response_text)
         return result
+        
     except json.JSONDecodeError as e:
-        st.error(f"Error parsing response. Please try again.")
+        st.error("Error parsing AI response. Please try again.")
         return None
     except Exception as e:
         st.error(f"Error analyzing condition: {str(e)}")
