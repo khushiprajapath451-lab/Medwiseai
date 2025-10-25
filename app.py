@@ -12,8 +12,6 @@ st.set_page_config(
 )
 
 # Custom CSS
-# Custom CSS
-# Custom CSS
 st.markdown("""
 <style>
     /* Main page background - White */
@@ -21,13 +19,12 @@ st.markdown("""
         background-color: #ffffff;
     }
     
-    /* Main content area - White */
     .main {
         background-color: #ffffff;
         padding: 2rem;
     }
     
-    /* Sidebar background - Avocado */
+    /* Sidebar - Avocado */
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #568203 0%, #6a9b05 100%);
     }
@@ -36,7 +33,7 @@ st.markdown("""
         color: #ffffff !important;
     }
     
-    /* Header styling - Avocado background with White text */
+    /* Header - Avocado */
     .main-header {
         font-size: 2.8rem;
         font-weight: 700;
@@ -49,7 +46,6 @@ st.markdown("""
         box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
     }
     
-    /* Subheader - White text on avocado */
     .sub-header {
         font-size: 1.2rem;
         color: #ffffff !important;
@@ -61,62 +57,75 @@ st.markdown("""
         border-bottom: 4px solid #568203;
     }
     
+    /* KEEP BLUE BACKGROUND, CHANGE TEXT TO GRAY */
+    .stAlert p,
+    .stAlert div,
+    .stAlert span,
+    .stAlert strong,
+    .stAlert li,
+    [data-testid="stAlert"] p,
+    [data-testid="stAlert"] div,
+    [data-testid="stAlert"] span,
+    [data-testid="stAlert"] strong,
+    [data-testid="stAlert"] li {
+        color: #4b5563 !important;
+    }
+    
+    /* Info boxes - KEEP BLUE, TEXT GRAY */
+    .stInfo p,
+    .stInfo div,
+    .stInfo span,
+    .stInfo strong,
+    .stInfo li,
+    [data-testid="stInfo"] p,
+    [data-testid="stInfo"] div,
+    [data-testid="stInfo"] span,
+    [data-testid="stInfo"] strong,
+    [data-testid="stInfo"] li {
+        color: #4b5563 !important;
+    }
+    
     /* Remove disclaimer box */
     .disclaimer-box {
         display: none !important;
     }
     
-    /* Risk level cards - White with colored borders */
-    .risk-high {
+    /* Risk cards */
+    .risk-high, .risk-medium, .risk-low {
         background-color: #ffffff;
-        border: 2px solid #dc2626;
-        border-left: 5px solid #dc2626;
+        border: 2px solid #e5e7eb;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
-    .risk-high h2, .risk-high p, .risk-high strong {
-        color: #4b5563 !important;
+    .risk-high {
+        border-left: 5px solid #dc2626;
     }
     
     .risk-medium {
-        background-color: #ffffff;
-        border: 2px solid #f59e0b;
         border-left: 5px solid #f59e0b;
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    
-    .risk-medium h2, .risk-medium p, .risk-medium strong {
-        color: #4b5563 !important;
     }
     
     .risk-low {
-        background-color: #ffffff;
-        border: 2px solid #10b981;
         border-left: 5px solid #10b981;
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
+    .risk-high h2, .risk-high p, .risk-high strong,
+    .risk-medium h2, .risk-medium p, .risk-medium strong,
     .risk-low h2, .risk-low p, .risk-low strong {
         color: #4b5563 !important;
     }
     
-    /* Info cards - White with avocado border */
+    /* Info cards */
     .info-card {
         background-color: #ffffff;
         border: 2px solid #568203;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
@@ -130,14 +139,13 @@ st.markdown("""
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
         color: #4b5563 !important;
     }
     
-    /* Primary button - Avocado */
+    /* Buttons - Avocado */
     .stButton>button {
         background: linear-gradient(135deg, #568203 0%, #6a9b05 100%);
         color: #ffffff !important;
@@ -152,11 +160,10 @@ st.markdown("""
     
     .stButton>button:hover {
         background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
-        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.4);
         transform: translateY(-2px);
     }
     
-    /* Text input areas */
+    /* Text input */
     .stTextArea textarea {
         border: 2px solid #568203;
         border-radius: 0.5rem;
@@ -168,69 +175,46 @@ st.markdown("""
         color: #9ca3af;
     }
     
-    .stTextArea textarea:focus {
-        border-color: #6a9b05;
-        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.2);
-    }
-    
     .stTextArea label {
         color: #4b5563 !important;
         font-weight: 500;
     }
     
-    /* Expander styling */
+    /* Expander - KEEP BACKGROUND, TEXT GRAY */
     .streamlit-expanderHeader {
-        background-color: #f9fafb;
-        border-radius: 0.5rem;
-        border: 1px solid #568203;
         color: #4b5563 !important;
     }
     
-    /* Success boxes */
-    .stSuccess {
-        background-color: #f0fdf4;
-        border-left: 4px solid #10b981;
+    .streamlit-expanderContent,
+    .streamlit-expanderContent * {
         color: #4b5563 !important;
     }
     
-    .stSuccess p, .stSuccess strong {
+    /* Success boxes - KEEP GREEN, TEXT GRAY */
+    .stSuccess p,
+    .stSuccess div,
+    .stSuccess span,
+    .stSuccess strong {
         color: #4b5563 !important;
     }
     
-    /* Info boxes */
-    .stInfo {
-        background-color: #eff6ff;
-        border-left: 4px solid #3b82f6;
+    /* Warning boxes - KEEP YELLOW, TEXT GRAY */
+    .stWarning p,
+    .stWarning div,
+    .stWarning span,
+    .stWarning strong {
         color: #4b5563 !important;
     }
     
-    .stInfo p, .stInfo strong {
+    /* Error boxes - KEEP RED, TEXT GRAY */
+    .stError p,
+    .stError div,
+    .stError span,
+    .stError strong {
         color: #4b5563 !important;
     }
     
-    /* Warning boxes */
-    .stWarning {
-        background-color: #fffbeb;
-        border-left: 4px solid #f59e0b;
-        color: #4b5563 !important;
-    }
-    
-    .stWarning p, .stWarning strong {
-        color: #4b5563 !important;
-    }
-    
-    /* Error boxes */
-    .stError {
-        background-color: #fef2f2;
-        border-left: 4px solid #dc2626;
-        color: #4b5563 !important;
-    }
-    
-    .stError p, .stError strong {
-        color: #4b5563 !important;
-    }
-    
-    /* Multiselect styling */
+    /* Multiselect */
     .stMultiSelect [data-baseweb="tag"] {
         background-color: #568203;
         color: #ffffff;
@@ -238,18 +222,9 @@ st.markdown("""
     
     .stMultiSelect label {
         color: #4b5563 !important;
-        font-weight: 500;
     }
     
     /* Radio buttons */
-    .stRadio > label {
-        background-color: #f9fafb;
-        padding: 0.5rem;
-        border-radius: 0.5rem;
-        color: #4b5563 !important;
-        border: 1px solid #e5e7eb;
-    }
-    
     .stRadio label {
         color: #4b5563 !important;
     }
@@ -257,20 +232,9 @@ st.markdown("""
     /* Selectbox */
     .stSelectbox label {
         color: #4b5563 !important;
-        font-weight: 500;
     }
     
-    .stSelectbox [data-baseweb="select"] {
-        background-color: #ffffff;
-        border-color: #568203;
-        color: #4b5563;
-    }
-    
-    /* FORCE ALL TEXT TO GRAY (#4b5563 - Medium Gray) */
-    .main, .main * {
-        color: #4b5563 !important;
-    }
-    
+    /* ALL MAIN CONTENT TEXT - GRAY */
     .main p, .main span, .main div, .main li {
         color: #4b5563 !important;
     }
@@ -283,29 +247,23 @@ st.markdown("""
         color: #374151 !important;
     }
     
-    .main [data-testid="stMarkdownContainer"], 
-    .main [data-testid="stMarkdownContainer"] *,
-    .main [data-testid="stMarkdownContainer"] p,
-    .main [data-testid="stMarkdownContainer"] span {
+    .main [data-testid="stMarkdownContainer"] * {
         color: #4b5563 !important;
     }
     
-    /* Exception: Keep header white text */
+    /* Exceptions - Keep white text */
     .main-header, .main-header * {
         color: #ffffff !important;
     }
     
-    /* Exception: Keep subheader white text */
     .sub-header, .sub-header * {
         color: #ffffff !important;
     }
     
-    /* Exception: Keep sidebar white text */
     [data-testid="stSidebar"], [data-testid="stSidebar"] * {
         color: #ffffff !important;
     }
     
-    /* Exception: Keep button text white */
     .stButton>button, .stButton>button * {
         color: #ffffff !important;
     }
@@ -317,17 +275,9 @@ st.markdown("""
         background: linear-gradient(90deg, transparent 0%, #568203 50%, transparent 100%);
         margin: 2rem 0;
     }
-    
-    /* Footer styling */
-    .main div[style*="text-align: center"] {
-        color: #6b7280 !important;
-    }
-    
-    .main div[style*="text-align: center"] p {
-        color: #6b7280 !important;
-    }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
