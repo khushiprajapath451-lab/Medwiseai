@@ -13,181 +13,266 @@ st.set_page_config(
 
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - Dark teal */
+    /* Main page background - Dark pastel green */
     .stApp {
-        background: linear-gradient(135deg, #0d4d4d 0%, #0a3a3a 100%);
+        background-color: #5f7a61;
     }
     
-    /* Main content area - White with slight teal tint */
+    /* Main content area - Nayanza (light mint) */
     .main {
-        background-color: #ffffff;
+        background-color: #d9ffdf;
         padding: 2rem;
     }
     
-    /* Sidebar background - Black with teal accent */
+    /* Sidebar background - Darker green */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1a1a1a 0%, #0d3d3d 100%);
+        background-color: #4a5f4c;
     }
     
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
-        color: #ffffff;
+        color: #000000;
     }
     
     [data-testid="stSidebar"] h2 {
-        color: #5eead4;
+        color: #000000;
+        font-weight: 600;
     }
     
-    /* Header styling */
+    [data-testid="stSidebar"] p {
+        color: #1a1a1a;
+    }
+    
+    /* Header styling - Black text */
     .main-header {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #0d9488;
+        color: #000000;
         text-align: center;
         margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
     }
     
     .sub-header {
         font-size: 1.1rem;
-        color: #134e4a;
+        color: #1a1a1a;
         text-align: center;
         margin-bottom: 2rem;
     }
     
     /* Risk level cards */
     .risk-high {
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        background-color: #ffe5e5;
         border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .risk-high h2, .risk-high p, .risk-high strong {
+        color: #000000;
     }
     
     .risk-medium {
-        background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        background-color: #fff5e5;
         border-left: 5px solid #f59e0b;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .risk-medium h2, .risk-medium p, .risk-medium strong {
+        color: #000000;
     }
     
     .risk-low {
-        background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
-        border-left: 5px solid #14b8a6;
+        background-color: #e5f9e9;
+        border-left: 5px solid #10b981;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .risk-low h2, .risk-low p, .risk-low strong {
+        color: #000000;
     }
     
     /* Disclaimer box */
     .disclaimer-box {
-        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        background-color: #fff0f0;
         border: 2px solid #fca5a5;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 2rem 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
-    /* Info cards - Teal accent */
+    .disclaimer-box p, .disclaimer-box strong {
+        color: #000000;
+    }
+    
+    /* Info cards - Light Nayanza */
     .info-card {
-        background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
-        border: 2px solid #5eead4;
+        background-color: #e8ffed;
+        border: 2px solid #a8d5a8;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        transition: transform 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
     }
     
-    .info-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    .info-card h3, .info-card p, .info-card li, .info-card strong {
+        color: #000000;
     }
     
     /* Emergency alert */
     .emergency-alert {
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        background-color: #ffe5e5;
         border: 3px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
     }
     
-    /* Primary button - Teal */
+    .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
+        color: #000000;
+    }
+    
+    /* Primary button - Dark pastel green */
     .stButton>button {
-        background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-        color: white;
+        background-color: #5f7a61;
+        color: #ffffff;
         font-weight: 600;
         padding: 0.75rem 2rem;
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 6px rgba(20, 184, 166, 0.3);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
-        background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
-        box-shadow: 0 6px 12px rgba(20, 184, 166, 0.4);
+        background-color: #4a5f4c;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
         transform: translateY(-2px);
     }
     
     /* Text input areas */
     .stTextArea textarea {
-        border: 2px solid #5eead4;
+        border: 2px solid #a8d5a8;
         border-radius: 0.5rem;
+        background-color: #ffffff;
+        color: #000000;
     }
     
     .stTextArea textarea:focus {
-        border-color: #14b8a6;
-        box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        border-color: #5f7a61;
+        box-shadow: 0 0 0 3px rgba(95, 122, 97, 0.1);
+    }
+    
+    .stTextArea label {
+        color: #000000;
+        font-weight: 500;
     }
     
     /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #f0fdfa;
+        background-color: #e8ffed;
         border-radius: 0.5rem;
-        border: 1px solid #99f6e4;
+        border: 1px solid #a8d5a8;
+        color: #000000;
     }
     
-    /* Success/Info/Warning boxes */
+    /* Success boxes */
     .stSuccess {
-        background-color: #ccfbf1;
-        border-left: 4px solid #14b8a6;
+        background-color: #e5f9e9;
+        border-left: 4px solid #10b981;
+        color: #000000;
     }
     
+    .stSuccess p {
+        color: #000000;
+    }
+    
+    /* Info boxes */
     .stInfo {
         background-color: #e0f2fe;
         border-left: 4px solid #0ea5e9;
+        color: #000000;
     }
     
+    .stInfo p {
+        color: #000000;
+    }
+    
+    /* Warning boxes */
     .stWarning {
-        background-color: #fef3c7;
+        background-color: #fff5e5;
         border-left: 4px solid #f59e0b;
+        color: #000000;
+    }
+    
+    .stWarning p {
+        color: #000000;
     }
     
     /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
-        background-color: #14b8a6;
+        background-color: #5f7a61;
+        color: #ffffff;
+    }
+    
+    .stMultiSelect label {
+        color: #000000;
+        font-weight: 500;
     }
     
     /* Radio buttons */
     .stRadio > label {
-        background-color: #f0fdfa;
+        background-color: #e8ffed;
         padding: 0.5rem;
         border-radius: 0.5rem;
+        color: #000000;
     }
     
-    /* Footer text color adjustment */
+    .stRadio label {
+        color: #000000;
+    }
+    
+    /* Selectbox */
+    .stSelectbox label {
+        color: #000000;
+        font-weight: 500;
+    }
+    
+    /* All paragraph text - Black */
     .main p {
-        color: #1f2937;
+        color: #000000;
+    }
+    
+    /* All heading text - Black */
+    .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
+        color: #000000;
+    }
+    
+    /* List items - Black */
+    .main li {
+        color: #000000;
+    }
+    
+    /* Strong/Bold text - Black */
+    .main strong {
+        color: #000000;
+    }
+    
+    /* Markdown text - Black */
+    .main [data-testid="stMarkdownContainer"] {
+        color: #000000;
     }
 </style>
 """, unsafe_allow_html=True)
