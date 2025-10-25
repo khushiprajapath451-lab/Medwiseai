@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -8,22 +7,13 @@ env/
 venv/
 ENV/
 .venv
-
-# Streamlit
 .streamlit/secrets.toml
-
-# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# OS
 .DS_Store
 Thumbs.db
-
-# Logs
 *.log
-
-# Environment
 .env
+
