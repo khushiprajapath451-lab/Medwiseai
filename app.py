@@ -328,10 +328,11 @@ def configure_gemini():
             st.error("API key not found. Please add GEMINI_API_KEY to your Streamlit secrets.")
             st.stop()
         genai.configure(api_key=api_key)
-        return genai.GenerativeModel('gemini-1.5-flash')
+        return genai.GenerativeModel('gemini-pro')  # ← CORRECT MODEL NAME
     except Exception as e:
         st.error(f"Error configuring API: {str(e)}")
         st.stop()
+
 
 def clean_json_response(text):
     """Clean JSON response from Gemini"""
