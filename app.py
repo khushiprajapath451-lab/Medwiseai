@@ -14,268 +14,311 @@ st.set_page_config(
 # Custom CSS
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - Dark pastel green */
+    /* Main page background - Black */
     .stApp {
-        background-color: #5f7a61;
+        background-color: #000000;
     }
     
-    /* Main content area - Nayanza (light mint) */
+    /* Main content area - Black with slight gradient */
     .main {
-        background-color: #d9ffdf;
+        background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
         padding: 2rem;
+        color: #ffffff;
     }
     
-    /* Sidebar background - Darker green */
+    /* Sidebar background - Dark purple to black */
     [data-testid="stSidebar"] {
-        background-color: #4a5f4c;
+        background: linear-gradient(180deg, #4a148c 0%, #1a1a1a 100%);
     }
     
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
-        color: #000000;
+        color: #ffffff;
     }
     
     [data-testid="stSidebar"] h2 {
-        color: #000000;
+        color: #e1bee7;
         font-weight: 600;
     }
     
     [data-testid="stSidebar"] p {
-        color: #1a1a1a;
+        color: #ffffff;
     }
     
-    /* Header styling - Black text */
+    /* Header styling - Bright Purple background */
     .main-header {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         font-weight: 700;
-        color: #000000;
+        color: #ffffff;
         text-align: center;
         margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 8px 16px rgba(123, 44, 191, 0.4);
     }
     
     .sub-header {
-        font-size: 1.1rem;
-        color: #1a1a1a;
+        font-size: 1.2rem;
+        color: #e0e0e0;
         text-align: center;
         margin-bottom: 2rem;
+        background: linear-gradient(135deg, #5a189a 0%, #3c096c 100%);
+        padding: 1rem;
+        border-radius: 0.75rem;
     }
     
     /* Risk level cards */
     .risk-high {
-        background-color: #ffe5e5;
-        border-left: 5px solid #dc2626;
+        background: linear-gradient(135deg, #2a0a0a 0%, #1a0000 100%);
+        border-left: 5px solid #ff1744;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(255, 23, 68, 0.3);
+        color: #ffffff;
     }
     
     .risk-high h2, .risk-high p, .risk-high strong {
-        color: #000000;
+        color: #ffffff;
     }
     
     .risk-medium {
-        background-color: #fff5e5;
-        border-left: 5px solid #f59e0b;
+        background: linear-gradient(135deg, #2a1a00 0%, #1a1000 100%);
+        border-left: 5px solid #ffc107;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        color: #ffffff;
     }
     
     .risk-medium h2, .risk-medium p, .risk-medium strong {
-        color: #000000;
+        color: #ffffff;
     }
     
     .risk-low {
-        background-color: #e5f9e9;
-        border-left: 5px solid #10b981;
+        background: linear-gradient(135deg, #0a2a0a 0%, #001a00 100%);
+        border-left: 5px solid #00e676;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(0, 230, 118, 0.3);
+        color: #ffffff;
     }
     
     .risk-low h2, .risk-low p, .risk-low strong {
-        color: #000000;
+        color: #ffffff;
     }
     
     /* Disclaimer box */
     .disclaimer-box {
-        background-color: #fff0f0;
-        border: 2px solid #fca5a5;
+        background: linear-gradient(135deg, #2a0a0a 0%, #1a0000 100%);
+        border: 2px solid #ff1744;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 2rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 8px rgba(255, 23, 68, 0.2);
+        color: #ffffff;
     }
     
     .disclaimer-box p, .disclaimer-box strong {
-        color: #000000;
+        color: #ffffff;
     }
     
-    /* Info cards - Light Nayanza */
+    /* Info cards - Dark with purple accent */
     .info-card {
-        background-color: #e8ffed;
-        border: 2px solid #a8d5a8;
+        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        border: 2px solid #7b2cbf;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        box-shadow: 0 4px 8px rgba(123, 44, 191, 0.2);
+        color: #ffffff;
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
-        color: #000000;
+        color: #ffffff;
     }
     
     /* Emergency alert */
     .emergency-alert {
-        background-color: #ffe5e5;
-        border: 3px solid #dc2626;
+        background: linear-gradient(135deg, #4a0000 0%, #2a0000 100%);
+        border: 3px solid #ff1744;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
+        box-shadow: 0 6px 12px rgba(255, 23, 68, 0.4);
+        color: #ffffff;
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-        color: #000000;
+        color: #ffffff;
     }
     
-    /* Primary button - Dark pastel green */
+    /* Primary button - Bright Purple */
     .stButton>button {
-        background-color: #5f7a61;
+        background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
         color: #ffffff;
         font-weight: 600;
         padding: 0.75rem 2rem;
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 8px rgba(123, 44, 191, 0.4);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
-        background-color: #4a5f4c;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        background: linear-gradient(135deg, #5a189a 0%, #3c096c 100%);
+        box-shadow: 0 6px 12px rgba(123, 44, 191, 0.6);
         transform: translateY(-2px);
     }
     
     /* Text input areas */
     .stTextArea textarea {
-        border: 2px solid #a8d5a8;
+        border: 2px solid #7b2cbf;
         border-radius: 0.5rem;
-        background-color: #ffffff;
-        color: #000000;
+        background-color: #1a1a1a;
+        color: #ffffff;
     }
     
     .stTextArea textarea:focus {
-        border-color: #5f7a61;
-        box-shadow: 0 0 0 3px rgba(95, 122, 97, 0.1);
+        border-color: #9d4edd;
+        box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.3);
     }
     
     .stTextArea label {
-        color: #000000;
+        color: #ffffff;
         font-weight: 500;
     }
     
     /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #e8ffed;
+        background-color: #1a1a1a;
         border-radius: 0.5rem;
-        border: 1px solid #a8d5a8;
-        color: #000000;
+        border: 1px solid #7b2cbf;
+        color: #ffffff;
     }
     
     /* Success boxes */
     .stSuccess {
-        background-color: #e5f9e9;
-        border-left: 4px solid #10b981;
-        color: #000000;
+        background-color: #0a2a0a;
+        border-left: 4px solid #00e676;
+        color: #ffffff;
     }
     
     .stSuccess p {
-        color: #000000;
+        color: #ffffff;
     }
     
     /* Info boxes */
     .stInfo {
-        background-color: #e0f2fe;
-        border-left: 4px solid #0ea5e9;
-        color: #000000;
+        background-color: #0a1a2a;
+        border-left: 4px solid #2196f3;
+        color: #ffffff;
     }
     
     .stInfo p {
-        color: #000000;
+        color: #ffffff;
     }
     
     /* Warning boxes */
     .stWarning {
-        background-color: #fff5e5;
-        border-left: 4px solid #f59e0b;
-        color: #000000;
+        background-color: #2a1a00;
+        border-left: 4px solid #ffc107;
+        color: #ffffff;
     }
     
     .stWarning p {
-        color: #000000;
+        color: #ffffff;
+    }
+    
+    /* Error boxes */
+    .stError {
+        background-color: #2a0a0a;
+        border-left: 4px solid #ff1744;
+        color: #ffffff;
+    }
+    
+    .stError p {
+        color: #ffffff;
     }
     
     /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
-        background-color: #5f7a61;
+        background-color: #7b2cbf;
         color: #ffffff;
     }
     
     .stMultiSelect label {
-        color: #000000;
+        color: #ffffff;
         font-weight: 500;
     }
     
     /* Radio buttons */
     .stRadio > label {
-        background-color: #e8ffed;
+        background-color: #1a1a1a;
         padding: 0.5rem;
         border-radius: 0.5rem;
-        color: #000000;
+        color: #ffffff;
+        border: 1px solid #7b2cbf;
     }
     
     .stRadio label {
-        color: #000000;
+        color: #ffffff;
     }
     
     /* Selectbox */
     .stSelectbox label {
-        color: #000000;
+        color: #ffffff;
         font-weight: 500;
     }
     
-    /* All paragraph text - Black */
+    .stSelectbox [data-baseweb="select"] {
+        background-color: #1a1a1a;
+        border-color: #7b2cbf;
+    }
+    
+    /* All paragraph text - White */
     .main p {
-        color: #000000;
+        color: #ffffff;
     }
     
-    /* All heading text - Black */
+    /* All heading text - White */
     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-        color: #000000;
+        color: #ffffff;
     }
     
-    /* List items - Black */
+    /* List items - White */
     .main li {
-        color: #000000;
+        color: #ffffff;
     }
     
-    /* Strong/Bold text - Black */
+    /* Strong/Bold text - Light Purple */
     .main strong {
-        color: #000000;
+        color: #e1bee7;
     }
     
-    /* Markdown text - Black */
+    /* Markdown text - White */
     .main [data-testid="stMarkdownContainer"] {
-        color: #000000;
+        color: #ffffff;
+    }
+    
+    /* Horizontal rule */
+    .main hr {
+        border-color: #7b2cbf;
+    }
+    
+    /* Footer styling */
+    .main div[style*="text-align: center"] {
+        color: #e0e0e0;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # Initialize session state
