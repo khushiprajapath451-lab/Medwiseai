@@ -330,26 +330,12 @@ def configure_gemini():
         if not api_key:
             st.error("API key not found. Please add GEMINI_API_KEY to your Streamlit secrets.")
             st.stop()
-        
         genai.configure(api_key=api_key)
-        
-        # Try different model names in order
-        model_names = ['gemini-pro', 'gemini-1.5-pro', 'gemini-1.0-pro']
-        
-        for model_name in model_names:
-            try:
-                model = genai.GenerativeModel(model_name)
-                return model
-            except:
-                continue
-        
-        # If none work, show error
-        st.error("Could not initialize Gemini model. Please check your API key.")
-        st.stop()
-        
+        return genai.GenerativeModel('gemini-pro')  # ← CORRECT MODEL NAME
     except Exception as e:
         st.error(f"Error configuring API: {str(e)}")
         st.stop()
+
 
 
 
