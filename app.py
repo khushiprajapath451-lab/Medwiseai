@@ -18,6 +18,7 @@ st.set_page_config(
 # Custom CSS
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
     /* Main page background - White */
@@ -76,24 +77,20 @@ st.markdown("""
         margin-bottom: 2rem;
     }
     
-    /* Divider line between header and content */
-    .main > div:first-child::after {
-        content: '';
-        display: block;
-        height: 3px;
-        background: linear-gradient(90deg, #568203 0%, #6a9b05 50%, #568203 100%);
-        margin: 2rem 0;
+    /* REMOVE RED DISCLAIMER BOX - Make it invisible */
+    .disclaimer-box {
+        display: none;
     }
     
-    /* Risk level cards - White background with colored borders */
+    /* Risk level cards - Clean white with subtle borders */
     .risk-high {
         background-color: #ffffff;
-        border: 2px solid #dc2626;
+        border: 2px solid #e5e7eb;
         border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .risk-high h2, .risk-high p, .risk-high strong {
@@ -102,12 +99,12 @@ st.markdown("""
     
     .risk-medium {
         background-color: #ffffff;
-        border: 2px solid #f59e0b;
+        border: 2px solid #e5e7eb;
         border-left: 5px solid #f59e0b;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .risk-medium h2, .risk-medium p, .risk-medium strong {
@@ -116,29 +113,15 @@ st.markdown("""
     
     .risk-low {
         background-color: #ffffff;
-        border: 2px solid #10b981;
+        border: 2px solid #e5e7eb;
         border-left: 5px solid #10b981;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .risk-low h2, .risk-low p, .risk-low strong {
-        color: #000000;
-    }
-    
-    /* Remove disclaimer box background - make it clean */
-    .disclaimer-box {
-        background-color: transparent;
-        border: 2px solid #dc2626;
-        padding: 1.5rem;
-        border-radius: 0.75rem;
-        margin: 2rem 0;
-        box-shadow: none;
-    }
-    
-    .disclaimer-box p, .disclaimer-box strong {
         color: #000000;
     }
     
@@ -149,7 +132,7 @@ st.markdown("""
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
@@ -163,7 +146,7 @@ st.markdown("""
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.15);
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
@@ -197,6 +180,10 @@ st.markdown("""
         color: #000000;
     }
     
+    .stTextArea textarea::placeholder {
+        color: #6b7280;
+    }
+    
     .stTextArea textarea:focus {
         border-color: #6a9b05;
         box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.2);
@@ -222,7 +209,7 @@ st.markdown("""
         color: #000000;
     }
     
-    .stSuccess p {
+    .stSuccess p, .stSuccess strong {
         color: #000000;
     }
     
@@ -233,7 +220,7 @@ st.markdown("""
         color: #000000;
     }
     
-    .stInfo p {
+    .stInfo p, .stInfo strong {
         color: #000000;
     }
     
@@ -244,7 +231,7 @@ st.markdown("""
         color: #000000;
     }
     
-    .stWarning p {
+    .stWarning p, .stWarning strong {
         color: #000000;
     }
     
@@ -255,7 +242,7 @@ st.markdown("""
         color: #000000;
     }
     
-    .stError p {
+    .stError p, .stError strong {
         color: #000000;
     }
     
@@ -292,35 +279,40 @@ st.markdown("""
     .stSelectbox [data-baseweb="select"] {
         background-color: #ffffff;
         border-color: #568203;
+        color: #000000;
     }
     
-    /* All paragraph text - Black */
+    /* ALL TEXT MUST BE BLACK */
     .main p {
-        color: #000000;
+        color: #000000 !important;
     }
     
-    /* All heading text - Black */
     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-        color: #000000;
+        color: #000000 !important;
     }
     
-    /* List items - Black */
     .main li {
-        color: #000000;
+        color: #000000 !important;
     }
     
-    /* Strong/Bold text - Avocado for emphasis */
     .main strong {
-        color: #568203;
+        color: #000000 !important;
         font-weight: 600;
     }
     
-    /* Markdown text - Black */
     .main [data-testid="stMarkdownContainer"] {
-        color: #000000;
+        color: #000000 !important;
     }
     
-    /* Horizontal rule - Avocado */
+    .main [data-testid="stMarkdownContainer"] p {
+        color: #000000 !important;
+    }
+    
+    .main [data-testid="stMarkdownContainer"] strong {
+        color: #000000 !important;
+    }
+    
+    /* Horizontal rule */
     .main hr {
         border: 0;
         height: 2px;
@@ -330,10 +322,19 @@ st.markdown("""
     
     /* Footer styling */
     .main div[style*="text-align: center"] {
-        color: #000000;
+        color: #000000 !important;
+    }
+    
+    .main div[style*="text-align: center"] p {
+        color: #000000 !important;
+    }
+    
+    .main div[style*="text-align: center"] strong {
+        color: #000000 !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
