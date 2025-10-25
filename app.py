@@ -13,16 +13,17 @@ st.set_page_config(
 
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - Black */
+    /* Main page background - White */
     .stApp {
-        background-color: #000000;
+        background-color: #ffffff;
     }
     
-    /* Main content area - Black */
+    /* Main content area - White */
     .main {
-        background-color: #000000;
+        background-color: #ffffff;
         padding: 2rem;
     }
     
@@ -65,75 +66,75 @@ st.markdown("""
         display: none !important;
     }
     
-    /* Risk level cards - Dark with colored borders */
+    /* Risk level cards - White with colored borders */
     .risk-high {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         border: 2px solid #dc2626;
         border-left: 5px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-high h2, .risk-high p, .risk-high strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .risk-medium {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         border: 2px solid #f59e0b;
         border-left: 5px solid #f59e0b;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-medium h2, .risk-medium p, .risk-medium strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .risk-low {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         border: 2px solid #10b981;
         border-left: 5px solid #10b981;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .risk-low h2, .risk-low p, .risk-low strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
-    /* Info cards - Dark with avocado border */
+    /* Info cards - White with avocado border */
     .info-card {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         border: 2px solid #568203;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     }
     
     .info-card h3, .info-card p, .info-card li, .info-card strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Emergency alert */
     .emergency-alert {
-        background-color: #2a0000;
+        background-color: #fff5f5;
         border: 3px solid #dc2626;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
-        box-shadow: 0 6px 12px rgba(220, 38, 38, 0.4);
+        box-shadow: 0 4px 8px rgba(220, 38, 38, 0.2);
     }
     
     .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Primary button - Avocado */
@@ -145,13 +146,13 @@ st.markdown("""
         border-radius: 0.75rem;
         border: none;
         width: 100%;
-        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.4);
+        box-shadow: 0 4px 8px rgba(86, 130, 3, 0.3);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
         background: linear-gradient(135deg, #6a9b05 0%, #7ab305 100%);
-        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.6);
+        box-shadow: 0 6px 12px rgba(86, 130, 3, 0.4);
         transform: translateY(-2px);
     }
     
@@ -159,74 +160,74 @@ st.markdown("""
     .stTextArea textarea {
         border: 2px solid #568203;
         border-radius: 0.5rem;
-        background-color: #1a1a1a;
-        color: #ffffff !important;
+        background-color: #ffffff;
+        color: #4b5563 !important;
     }
     
     .stTextArea textarea::placeholder {
-        color: #999999;
+        color: #9ca3af;
     }
     
     .stTextArea textarea:focus {
         border-color: #6a9b05;
-        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.3);
+        box-shadow: 0 0 0 3px rgba(86, 130, 3, 0.2);
     }
     
     .stTextArea label {
-        color: #ffffff !important;
+        color: #4b5563 !important;
         font-weight: 500;
     }
     
     /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #1a1a1a;
+        background-color: #f9fafb;
         border-radius: 0.5rem;
         border: 1px solid #568203;
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Success boxes */
     .stSuccess {
-        background-color: #0a2a0a;
+        background-color: #f0fdf4;
         border-left: 4px solid #10b981;
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .stSuccess p, .stSuccess strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Info boxes */
     .stInfo {
-        background-color: #0a1a2a;
+        background-color: #eff6ff;
         border-left: 4px solid #3b82f6;
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .stInfo p, .stInfo strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Warning boxes */
     .stWarning {
-        background-color: #2a1a00;
+        background-color: #fffbeb;
         border-left: 4px solid #f59e0b;
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .stWarning p, .stWarning strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Error boxes */
     .stError {
-        background-color: #2a0a0a;
+        background-color: #fef2f2;
         border-left: 4px solid #dc2626;
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .stError p, .stError strong {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Multiselect styling */
@@ -236,60 +237,80 @@ st.markdown("""
     }
     
     .stMultiSelect label {
-        color: #ffffff !important;
+        color: #4b5563 !important;
         font-weight: 500;
     }
     
     /* Radio buttons */
     .stRadio > label {
-        background-color: #1a1a1a;
+        background-color: #f9fafb;
         padding: 0.5rem;
         border-radius: 0.5rem;
-        color: #ffffff !important;
-        border: 1px solid #568203;
+        color: #4b5563 !important;
+        border: 1px solid #e5e7eb;
     }
     
     .stRadio label {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     /* Selectbox */
     .stSelectbox label {
-        color: #ffffff !important;
+        color: #4b5563 !important;
         font-weight: 500;
     }
     
     .stSelectbox [data-baseweb="select"] {
-        background-color: #1a1a1a;
+        background-color: #ffffff;
         border-color: #568203;
-        color: #ffffff;
+        color: #4b5563;
     }
     
-    /* FORCE ALL TEXT TO WHITE on black background */
+    /* FORCE ALL TEXT TO GRAY (#4b5563 - Medium Gray) */
     .main, .main * {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .main p, .main span, .main div, .main li {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-        color: #ffffff !important;
+        color: #4b5563 !important;
     }
     
     .main strong, .main b {
-        color: #ffffff !important;
+        color: #374151 !important;
     }
     
     .main [data-testid="stMarkdownContainer"], 
     .main [data-testid="stMarkdownContainer"] *,
     .main [data-testid="stMarkdownContainer"] p,
     .main [data-testid="stMarkdownContainer"] span {
+        color: #4b5563 !important;
+    }
+    
+    /* Exception: Keep header white text */
+    .main-header, .main-header * {
         color: #ffffff !important;
     }
     
-    /* Horizontal rule - Avocado */
+    /* Exception: Keep subheader white text */
+    .sub-header, .sub-header * {
+        color: #ffffff !important;
+    }
+    
+    /* Exception: Keep sidebar white text */
+    [data-testid="stSidebar"], [data-testid="stSidebar"] * {
+        color: #ffffff !important;
+    }
+    
+    /* Exception: Keep button text white */
+    .stButton>button, .stButton>button * {
+        color: #ffffff !important;
+    }
+    
+    /* Horizontal rule */
     .main hr {
         border: 0;
         height: 2px;
@@ -299,14 +320,15 @@ st.markdown("""
     
     /* Footer styling */
     .main div[style*="text-align: center"] {
-        color: #ffffff !important;
+        color: #6b7280 !important;
     }
     
     .main div[style*="text-align: center"] p {
-        color: #ffffff !important;
+        color: #6b7280 !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
