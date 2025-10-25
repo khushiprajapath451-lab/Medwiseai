@@ -15,23 +15,24 @@ st.set_page_config(
 # Custom CSS
 # Custom CSS
 # Custom CSS
+# Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - Black */
+    /* Main page background - Bright Green */
     .stApp {
-        background-color: #000000;
+        background: linear-gradient(180deg, #00c853 0%, #00e676 100%);
     }
     
-    /* Main content area - Black with slight gradient */
+    /* Main content area - Light Green */
     .main {
-        background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
+        background: linear-gradient(180deg, #ccff90 0%, #b9f6ca 100%);
         padding: 2rem;
         color: #ffffff;
     }
     
-    /* Sidebar background - Dark purple to black */
+    /* Sidebar background - Medium Green */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #4a148c 0%, #1a1a1a 100%);
+        background: linear-gradient(180deg, #00e676 0%, #00c853 100%);
     }
     
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] {
@@ -39,7 +40,7 @@ st.markdown("""
     }
     
     [data-testid="stSidebar"] h2 {
-        color: #e1bee7;
+        color: #ffffff;
         font-weight: 600;
     }
     
@@ -47,37 +48,37 @@ st.markdown("""
         color: #ffffff;
     }
     
-    /* Header styling - Bright Purple background */
+    /* Header styling - Bright Green background with White text */
     .main-header {
         font-size: 2.8rem;
         font-weight: 700;
         color: #ffffff;
         text-align: center;
         margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
+        background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
         padding: 2rem;
         border-radius: 1rem;
-        box-shadow: 0 8px 16px rgba(123, 44, 191, 0.4);
+        box-shadow: 0 8px 16px rgba(0, 200, 83, 0.4);
     }
     
     .sub-header {
         font-size: 1.2rem;
-        color: #e0e0e0;
+        color: #ffffff;
         text-align: center;
         margin-bottom: 2rem;
-        background: linear-gradient(135deg, #5a189a 0%, #3c096c 100%);
+        background: linear-gradient(135deg, #00e676 0%, #69f0ae 100%);
         padding: 1rem;
         border-radius: 0.75rem;
     }
     
     /* Risk level cards */
     .risk-high {
-        background: linear-gradient(135deg, #2a0a0a 0%, #1a0000 100%);
-        border-left: 5px solid #ff1744;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        border-left: 5px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(255, 23, 68, 0.3);
+        box-shadow: 0 4px 8px rgba(255, 82, 82, 0.3);
         color: #ffffff;
     }
     
@@ -86,12 +87,12 @@ st.markdown("""
     }
     
     .risk-medium {
-        background: linear-gradient(135deg, #2a1a00 0%, #1a1000 100%);
-        border-left: 5px solid #ffc107;
+        background: linear-gradient(135deg, #ffd54f 0%, #ffeb3b 100%);
+        border-left: 5px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+        box-shadow: 0 4px 8px rgba(255, 235, 59, 0.3);
         color: #ffffff;
     }
     
@@ -100,8 +101,8 @@ st.markdown("""
     }
     
     .risk-low {
-        background: linear-gradient(135deg, #0a2a0a 0%, #001a00 100%);
-        border-left: 5px solid #00e676;
+        background: linear-gradient(135deg, #00e676 0%, #69f0ae 100%);
+        border-left: 5px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
@@ -115,12 +116,12 @@ st.markdown("""
     
     /* Disclaimer box */
     .disclaimer-box {
-        background: linear-gradient(135deg, #2a0a0a 0%, #1a0000 100%);
-        border: 2px solid #ff1744;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff8a80 100%);
+        border: 2px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 2rem 0;
-        box-shadow: 0 4px 8px rgba(255, 23, 68, 0.2);
+        box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
         color: #ffffff;
     }
     
@@ -128,14 +129,14 @@ st.markdown("""
         color: #ffffff;
     }
     
-    /* Info cards - Dark with purple accent */
+    /* Info cards - Light Green with white text */
     .info-card {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-        border: 2px solid #7b2cbf;
+        background: linear-gradient(135deg, #69f0ae 0%, #00e676 100%);
+        border: 2px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1rem 0;
-        box-shadow: 0 4px 8px rgba(123, 44, 191, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 230, 118, 0.2);
         color: #ffffff;
     }
     
@@ -145,8 +146,8 @@ st.markdown("""
     
     /* Emergency alert */
     .emergency-alert {
-        background: linear-gradient(135deg, #4a0000 0%, #2a0000 100%);
-        border: 3px solid #ff1744;
+        background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+        border: 3px solid #ffffff;
         padding: 1.5rem;
         border-radius: 0.75rem;
         margin: 1.5rem 0;
@@ -158,36 +159,36 @@ st.markdown("""
         color: #ffffff;
     }
     
-    /* Primary button - Bright Purple */
+    /* Primary button - Bright Green */
     .stButton>button {
-        background: linear-gradient(135deg, #7b2cbf 0%, #5a189a 100%);
+        background: linear-gradient(135deg, #00c853 0%, #00e676 100%);
         color: #ffffff;
         font-weight: 600;
         padding: 0.75rem 2rem;
         border-radius: 0.75rem;
-        border: none;
+        border: 2px solid #ffffff;
         width: 100%;
-        box-shadow: 0 4px 8px rgba(123, 44, 191, 0.4);
+        box-shadow: 0 4px 8px rgba(0, 200, 83, 0.4);
         transition: all 0.3s;
     }
     
     .stButton>button:hover {
-        background: linear-gradient(135deg, #5a189a 0%, #3c096c 100%);
-        box-shadow: 0 6px 12px rgba(123, 44, 191, 0.6);
+        background: linear-gradient(135deg, #00e676 0%, #69f0ae 100%);
+        box-shadow: 0 6px 12px rgba(0, 230, 118, 0.5);
         transform: translateY(-2px);
     }
     
     /* Text input areas */
     .stTextArea textarea {
-        border: 2px solid #7b2cbf;
+        border: 2px solid #00e676;
         border-radius: 0.5rem;
-        background-color: #1a1a1a;
-        color: #ffffff;
+        background-color: #e8f5e9;
+        color: #2e7d32;
     }
     
     .stTextArea textarea:focus {
-        border-color: #9d4edd;
-        box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.3);
+        border-color: #00c853;
+        box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.3);
     }
     
     .stTextArea label {
@@ -197,16 +198,16 @@ st.markdown("""
     
     /* Expander styling */
     .streamlit-expanderHeader {
-        background-color: #1a1a1a;
+        background: linear-gradient(135deg, #69f0ae 0%, #00e676 100%);
         border-radius: 0.5rem;
-        border: 1px solid #7b2cbf;
+        border: 1px solid #ffffff;
         color: #ffffff;
     }
     
     /* Success boxes */
     .stSuccess {
-        background-color: #0a2a0a;
-        border-left: 4px solid #00e676;
+        background: linear-gradient(135deg, #00e676 0%, #69f0ae 100%);
+        border-left: 4px solid #ffffff;
         color: #ffffff;
     }
     
@@ -216,8 +217,8 @@ st.markdown("""
     
     /* Info boxes */
     .stInfo {
-        background-color: #0a1a2a;
-        border-left: 4px solid #2196f3;
+        background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
+        border-left: 4px solid #ffffff;
         color: #ffffff;
     }
     
@@ -227,8 +228,8 @@ st.markdown("""
     
     /* Warning boxes */
     .stWarning {
-        background-color: #2a1a00;
-        border-left: 4px solid #ffc107;
+        background: linear-gradient(135deg, #ffd54f 0%, #ffeb3b 100%);
+        border-left: 4px solid #ffffff;
         color: #ffffff;
     }
     
@@ -238,8 +239,8 @@ st.markdown("""
     
     /* Error boxes */
     .stError {
-        background-color: #2a0a0a;
-        border-left: 4px solid #ff1744;
+        background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+        border-left: 4px solid #ffffff;
         color: #ffffff;
     }
     
@@ -249,7 +250,7 @@ st.markdown("""
     
     /* Multiselect styling */
     .stMultiSelect [data-baseweb="tag"] {
-        background-color: #7b2cbf;
+        background-color: #00c853;
         color: #ffffff;
     }
     
@@ -260,11 +261,11 @@ st.markdown("""
     
     /* Radio buttons */
     .stRadio > label {
-        background-color: #1a1a1a;
+        background: linear-gradient(135deg, #69f0ae 0%, #00e676 100%);
         padding: 0.5rem;
         border-radius: 0.5rem;
         color: #ffffff;
-        border: 1px solid #7b2cbf;
+        border: 1px solid #ffffff;
     }
     
     .stRadio label {
@@ -278,8 +279,8 @@ st.markdown("""
     }
     
     .stSelectbox [data-baseweb="select"] {
-        background-color: #1a1a1a;
-        border-color: #7b2cbf;
+        background-color: #e8f5e9;
+        border-color: #00e676;
     }
     
     /* All paragraph text - White */
@@ -297,9 +298,9 @@ st.markdown("""
         color: #ffffff;
     }
     
-    /* Strong/Bold text - Light Purple */
+    /* Strong/Bold text - White */
     .main strong {
-        color: #e1bee7;
+        color: #ffffff;
     }
     
     /* Markdown text - White */
@@ -309,12 +310,12 @@ st.markdown("""
     
     /* Horizontal rule */
     .main hr {
-        border-color: #7b2cbf;
+        border-color: #ffffff;
     }
     
     /* Footer styling */
     .main div[style*="text-align: center"] {
-        color: #e0e0e0;
+        color: #ffffff;
     }
 </style>
 """, unsafe_allow_html=True)
