@@ -15,49 +15,48 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
-  /* Main page background - White for brightness */
+ /* Main app background - light blue */
 .stApp {
-    background-color: #ffffff;
+    background-color: #cde6f7; /* light blue */
 }
 
-/* Main content area - White */
+/* Main content area - light blue background, black text */
 .main {
-    background-color: #ffffff;
+    background-color: #cde6f7; /* light blue */
     padding: 2rem;
     color: #000000; /* black text */
 }
 
-/* Sidebar background - Blue gradient */
+/* Sidebar background - blue gradient with white text */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #03045E 0%, #0077B6 100%);
-    color: #ffffff; /* white sidebar text */
+    color: #ffffff !important;
 }
 
-/* Sidebar text */
 [data-testid="stSidebar"] * {
     color: #ffffff !important;
 }
 
-/* Header styling - Blue gradient with black text */
+/* Header styling - blue gradient background, black text */
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
-    color: #000000 !important; /* black text */
+    color: #000000 !important;
     text-align: center;
     margin-bottom: 0rem;
-    background: linear-gradient(135deg, #03045E 0%, #0077B6 100%);
+    background: linear-gradient(135deg, #03045E, #0077B6);
     padding: 2rem;
     border-radius: 1rem 1rem 0 0;
     box-shadow: none !important;
 }
 
-/* Subheader - Blue gradient with black text */
+/* Subheader styling - blue gradient with black text */
 .sub-header {
     font-size: 1.2rem;
     color: #000000 !important;
     text-align: center;
     margin-bottom: 2rem;
-    background: linear-gradient(135deg, #0077B6 0%, #03045E 100%);
+    background: linear-gradient(135deg, #0077B6, #03045E);
     padding: 1rem;
     border-radius: 0 0 1rem 1rem;
     border-bottom: none;
@@ -68,7 +67,7 @@ st.markdown("""
     display: none !important;
 }
 
-/* Remove backgrounds, borders, shadows from output sections */
+/* Remove backgrounds, borders, shadows in output sections */
 .info-card, .risk-high, .risk-medium, .risk-low, .emergency-alert {
     background: transparent !important;
     border: none !important;
@@ -77,16 +76,16 @@ st.markdown("""
     margin: 0 !important;
 }
 
-/* Text colors for output sections - black */
+/* Output text in black */
 .risk-high h2, .risk-high p, .risk-high strong,
 .risk-medium h2, .risk-medium p, .risk-medium strong,
 .risk-low h2, .risk-low p, .risk-low strong,
 .info-card h3, .info-card p, .info-card li, .info-card strong,
 .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-    color: #000000 !important; /* black */
+    color: #000000 !important;
 }
 
-/* Buttons blue gradient with white text */
+/* Buttons with blue gradient and white text */
 .stButton>button {
     background: linear-gradient(135deg, #03045E, #0077B6);
     color: #ffffff !important;
@@ -101,11 +100,9 @@ st.markdown("""
 
 .stButton>button:hover {
     background: linear-gradient(135deg, #0077B6, #03045E);
-    box-shadow: none !important;
-    transform: translateY(0);
 }
 
-/* Text input areas */
+/* Text input areas - white background, blue border, black text */
 .stTextArea textarea {
     border: 2px solid #0077B6;
     border-radius: 0.5rem;
@@ -134,7 +131,7 @@ st.markdown("""
     border-radius: 0.5rem;
 }
 
-/* Multiselect tags - Blue background with white text */
+/* Multiselect tags - dark blue background with white text */
 .stMultiSelect [data-baseweb="tag"] {
     background-color: #03045E !important;
     color: #ffffff !important;
@@ -144,7 +141,7 @@ st.markdown("""
     color: #000000 !important;
 }
 
-/* Force all main text to black */
+/* Force all text in main area to black */
 .main, .main * {
     color: #000000 !important;
 }
@@ -161,7 +158,7 @@ st.markdown("""
     color: #000000 !important;
 }
 
-/* Horizontal rule - blue */
+/* Horizontal line - blue */
 .main hr {
     border: 0;
     height: 2px;
@@ -169,9 +166,11 @@ st.markdown("""
     margin: 2rem 0;
 }
 
-/* Footer text dark */
+/* Footer text in black */
 .main div[style*="text-align: center"] p {
-    color: #000000 !important
+    color: #000000 !important;
+}
+
 
 </style>
 """, unsafe_allow_html=True)
