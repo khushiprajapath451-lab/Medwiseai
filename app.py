@@ -15,22 +15,22 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
-    /* Main page background - ensure transparent or light background */
+  /* Main page background - White for brightness */
 .stApp {
-    background-color: #ffffff; /* white background for entire page */
+    background-color: #ffffff;
 }
 
-/* Main content area */
+/* Main content area - White */
 .main {
-    background-color: #ffffff; /* white for main area or transparent */
+    background-color: #ffffff;
     padding: 2rem;
-    color: #000000; /* default text color if needed, override elsewhere */
+    color: #000000; /* black text */
 }
 
-/* Sidebar background - use blue shades only, no dark or black */
+/* Sidebar background - Blue gradient */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #03045E 0%, #0077B6 100%);
-    color: #ffffff; /* white text for sidebar */
+    color: #ffffff; /* white sidebar text */
 }
 
 /* Sidebar text */
@@ -38,37 +38,37 @@ st.markdown("""
     color: #ffffff !important;
 }
 
-/* Header styling - remove background, keep text in blue or white */
+/* Header styling - Blue gradient with black text */
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
-    color: #0077B6 !important; /* blue text for header */
+    color: #000000 !important; /* black text */
     text-align: center;
     margin-bottom: 0rem;
-    background: transparent !important;
+    background: linear-gradient(135deg, #03045E 0%, #0077B6 100%);
     padding: 2rem;
-    border-radius: 0; /* no rounded corners */
+    border-radius: 1rem 1rem 0 0;
     box-shadow: none !important;
 }
 
-/* Subheader - simple text in blue, no background */
+/* Subheader - Blue gradient with black text */
 .sub-header {
     font-size: 1.2rem;
-    color: #03045E !important; /* dark blue */
+    color: #000000 !important;
     text-align: center;
     margin-bottom: 2rem;
-    background: transparent !important;
+    background: linear-gradient(135deg, #0077B6 0%, #03045E 100%);
     padding: 1rem;
-    border-radius: 0;
+    border-radius: 0 0 1rem 1rem;
     border-bottom: none;
 }
 
-/* Remove disclaimer box if existing */
+/* Remove disclaimer box */
 .disclaimer-box {
     display: none !important;
 }
 
-/* Remove boxes and boxes shadows from output sections */
+/* Remove backgrounds, borders, shadows from output sections */
 .info-card, .risk-high, .risk-medium, .risk-low, .emergency-alert {
     background: transparent !important;
     border: none !important;
@@ -77,16 +77,16 @@ st.markdown("""
     margin: 0 !important;
 }
 
-/* Text colors in output sections to blue or black on white background */
+/* Text colors for output sections - black */
 .risk-high h2, .risk-high p, .risk-high strong,
 .risk-medium h2, .risk-medium p, .risk-medium strong,
 .risk-low h2, .risk-low p, .risk-low strong,
 .info-card h3, .info-card p, .info-card li, .info-card strong,
 .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-    color: #03045E !important; /* dark blue for all text in output sections */
+    color: #000000 !important; /* black */
 }
 
-/* Buttons in blue gradient with white text */
+/* Buttons blue gradient with white text */
 .stButton>button {
     background: linear-gradient(135deg, #03045E, #0077B6);
     color: #ffffff !important;
@@ -98,62 +98,70 @@ st.markdown("""
     box-shadow: none !important;
     transition: all 0.3s;
 }
+
 .stButton>button:hover {
     background: linear-gradient(135deg, #0077B6, #03045E);
     box-shadow: none !important;
     transform: translateY(0);
 }
 
-/* Text input areas - white background, blue border, blue focus */
+/* Text input areas */
 .stTextArea textarea {
     border: 2px solid #0077B6;
     border-radius: 0.5rem;
     background-color: #ffffff;
     color: #000000 !important;
 }
+
 .stTextArea textarea::placeholder {
     color: #999999;
 }
+
 .stTextArea textarea:focus {
     border-color: #03045E;
     box-shadow: 0 0 0 3px rgba(3, 4, 94, 0.3);
 }
+
 .stTextArea label {
     color: #000000 !important;
 }
 
-/* Expanders - no background, only text in blue */
+/* Expander styling */
 .streamlit-expanderHeader {
     background: transparent !important;
     border: 1px solid #0077B6;
-    color: #03045E !important;
+    color: #000000 !important;
     border-radius: 0.5rem;
 }
 
-/* Multiselect tags - blue background and white text */
+/* Multiselect tags - Blue background with white text */
 .stMultiSelect [data-baseweb="tag"] {
     background-color: #03045E !important;
     color: #ffffff !important;
 }
+
 .stMultiSelect label {
     color: #000000 !important;
 }
 
-/* Force all text to black or white (if on white background) */
+/* Force all main text to black */
 .main, .main * {
     color: #000000 !important;
 }
+
 .main p, .main span, .main div, .main li {
     color: #000000 !important;
 }
+
 .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-    color: #03045E !important;
+    color: #000000 !important;
 }
+
 .main strong, .main b {
     color: #000000 !important;
 }
 
-/* Horizontal lines in blue */
+/* Horizontal rule - blue */
 .main hr {
     border: 0;
     height: 2px;
@@ -161,10 +169,9 @@ st.markdown("""
     margin: 2rem 0;
 }
 
-/* Footer text in black or blue on white background */
+/* Footer text dark */
 .main div[style*="text-align: center"] p {
-    color: #000000 !important;
-}
+    color: #000000 !important
 
 </style>
 """, unsafe_allow_html=True)
