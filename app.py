@@ -383,18 +383,18 @@ def clean_json_response(text):
 def analyze_medical_condition(user_input, model):
     # ... your existing code ...
 
-prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
+    prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
 
-User's condition description: """ + user_input + """
+    User's condition description: """ + user_input + """
 
-Provide a comprehensive analysis in the following JSON format:
+    Provide a comprehensive analysis in the following JSON format:
 
-{
-    "risk_level": "LOW/MEDIUM/HIGH",
-    ...
-}
-... rest of prompt ...
-"""
+    {
+        "risk_level": "LOW/MEDIUM/HIGH",
+        ...
+    }
+    ... rest of prompt ...
+    """
     try:
         response = model.generate_content(
             prompt,
