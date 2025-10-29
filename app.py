@@ -383,7 +383,7 @@ def clean_json_response(text):
 def analyze_medical_condition(user_input, model):
     # ... your existing code ...
 
-     prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
+prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
 
 User's condition description: """ + user_input + """
 
