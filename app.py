@@ -381,85 +381,31 @@ def clean_json_response(text):
 
 
 def analyze_medical_condition(user_input, model):
-    """Analyze medical condition using Gemini AI"""
-    
-    prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
-
-User's condition description: """ + user_input + """
-
-Provide a comprehensive analysis in the following JSON format:
-
-{
-    "risk_level": "LOW/MEDIUM/HIGH",
-    "urgency": "EMERGENCY/URGENT/CAN_WAIT/NON_URGENT",
-    "condition_name": "Name of the likely condition",
-    "simple_explanation": "Explain the condition in simple, easy-to-understand language",
-    "is_emergency": true/false,
-    "surgery_needed": "LIKELY_NEEDED/MAYBE_NEEDED/ALTERNATIVES_AVAILABLE/NOT_NEEDED",
-    "consultation_advice": "Type of specialist to consult and when",
-    "action_steps": [
-        "Step 1",
-        "Step 2",
-        "Step 3",
-        "Step 4"
-    ],
-    "questions_for_doctor": [
-        "Question 1",
-        "Question 2",
-        "Question 3",
-        "Question 4"
-    ],
-    "alternative_treatments": [
-        "Alternative 1",
-        "Alternative 2",
-        "Alternative 3"
-    ],
-    "warning_signs": [
-        "Sign 1 that requires immediate attention",
-        "Sign 2",
-        "Sign 3"
-    ],
-    "lifestyle_changes": [
-        "Change 1",
-        "Change 2",
-        "Change 3"
-    ],
-    "estimated_recovery_time": "Recovery timeline if treatment is pursued",
-    "key_message": "One important message for the patient"
-}
-
-Important guidelines:
-- Be conservative in risk assessment
-- Use simple language
-- If emergency, mark clearly
-- Always encourage professional medical consultation
-- Provide balanced view of surgery vs alternatives
-- Be empathetic and supportive"""
-
+    # ... your existing code ...
     try:
-        # Generate content with proper configuration
-        generation_config = {
-            "temperature": 0.7,
-            "top_p": 0.95,
-            "top_k": 40,
-            "max_output_tokens": 2048,
-        }
-        
         response = model.generate_content(
             prompt,
-            generation_config=generation_config
+            generation_config={
+                "temperature": 0.7,
+                "top_p": 0.95,
+                "top_k": 40,
+                "max_output_tokens": 2048,
+            }
         )
-        
-        response_text = clean_json_response(response.text)
+
+        raw_text = response.text
+        st.text_area("Raw AI Response (for debugging)", raw_text, height=200)
+
+        response_text = clean_json_response(raw_text)
         result = json.loads(response_text)
         return result
-        
     except json.JSONDecodeError as e:
         st.error("Error parsing AI response. Please try again.")
         return None
     except Exception as e:
         st.error(f"Error analyzing condition: {str(e)}")
         return None
+
 
 def display_analysis(result):
     """Display the analysis results in a clean, professional format"""
