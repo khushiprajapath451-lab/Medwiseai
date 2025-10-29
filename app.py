@@ -324,30 +324,35 @@ if 'analysis_result' not in st.session_state:
     st.session_state.analysis_result = None
 
 def configure_gemini():
-    """Configure Gemini API - Fixed for current API version"""
+    """Configure Gemini API and list available models to choose a valid one."""
     try:
         api_key = st.secrets.get("GEMINI_API_KEY", "")
         if not api_key:
             st.error("API key not found. Please add GEMINI_API_KEY to your Streamlit secrets.")
             st.stop()
-        
+
         genai.configure(api_key=api_key)
-        
-        # Use a supported Gemini model name
-        model = genai.GenerativeModel('gemini-1.0-pro-vision-001')
-        
-        return model
-        
+
+        # List available models for debugging
+        models = genai.list_models()
+        st.write("Available models:", [model.name for model in models])
+
+        # Replace model name below with a valid one from the list above
+        # For now, just pick the first available generative model
+        for model in models:
+            if model.supported_generation_methods and 'generateContent' in model.supported_generation_methods:
+                selected_model = model.name
+                st.info(f"Using model: {selected_model}")
+                return genai.GenerativeModel(selected_model)
+
+        st.error("No suitable generative model found.")
+        st.stop()
+
     except Exception as e:
         st.error(f"Error configuring Gemini: {str(e)}")
         st.error("Please create a NEW API key at: https://aistudio.google.com/app/apikey")
         st.stop()
-
-
-
-
-
-def clean_json_response(text):
+n_response(text):
     """Clean JSON response from Gemini"""
     # Remove markdown code blocks
     text = text.strip()
