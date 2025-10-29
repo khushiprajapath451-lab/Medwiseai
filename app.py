@@ -324,7 +324,6 @@ if 'analysis_result' not in st.session_state:
     st.session_state.analysis_result = None
 
 def configure_gemini():
-    """Configure Gemini API and list available models to choose a valid one."""
     try:
         api_key = st.secrets.get("GEMINI_API_KEY", "")
         if not api_key:
@@ -333,25 +332,26 @@ def configure_gemini():
 
         genai.configure(api_key=api_key)
 
-        # List available models for debugging
         models = genai.list_models()
         st.write("Available models:", [model.name for model in models])
 
-        # Replace model name below with a valid one from the list above
-        # For now, just pick the first available generative model
-        for model in models:
-            if model.supported_generation_methods and 'generateContent' in model.supported_generation_methods:
-                selected_model = model.name
-                st.info(f"Using model: {selected_model}")
-                return genai.GenerativeModel(selected_model)
-
-        st.error("No suitable generative model found.")
-        st.stop()
+        # Select a generative model by name pattern
+        for model_obj in models:
+            model_name = model_obj.name
+            if ('flash' in model_name or 'pro' in model_name) and 'gemini' in model_name:
+                st.info(f"Using model: {model_name}")
+                return genai.GenerativeModel(model_name)
+        
+        # Fallback: use a hardcoded model from your earlier list
+        fallback_model = 'gemini-2.5-flash'
+        st.info(f"Using fallback model: {fallback_model}")
+        return genai.GenerativeModel(fallback_model)
 
     except Exception as e:
         st.error(f"Error configuring Gemini: {str(e)}")
         st.error("Please create a NEW API key at: https://aistudio.google.com/app/apikey")
         st.stop()
+
 
     
 def n_response(text):
