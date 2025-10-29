@@ -352,7 +352,9 @@ def configure_gemini():
         st.error(f"Error configuring Gemini: {str(e)}")
         st.error("Please create a NEW API key at: https://aistudio.google.com/app/apikey")
         st.stop()
-n_response(text):
+
+    
+    def n_response(text):
     """Clean JSON response from Gemini"""
     # Remove markdown code blocks
     text = text.strip()
