@@ -331,12 +331,10 @@ def configure_gemini():
             st.error("API key not found. Please add GEMINI_API_KEY to your Streamlit secrets.")
             st.stop()
         
-        # Configure with API key
-        import google.generativeai as genai
         genai.configure(api_key=api_key)
         
-        # Use the current working model name (no 'models/' prefix)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Use a supported Gemini model name
+        model = genai.GenerativeModel('gemini-1.0-pro-vision-001')
         
         return model
         
@@ -344,6 +342,7 @@ def configure_gemini():
         st.error(f"Error configuring Gemini: {str(e)}")
         st.error("Please create a NEW API key at: https://aistudio.google.com/app/apikey")
         st.stop()
+
 
 
 
