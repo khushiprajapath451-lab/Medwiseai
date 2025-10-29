@@ -334,7 +334,7 @@ def configure_gemini():
         genai.configure(api_key=api_key)
 
         # List available models for debugging
-        models = genai.list_models('models/gemini-2.0-flash-thinking-exp-1219')
+        models = genai.list_models()
         st.write("Available models:", [model.name for model in models])
 
         # Replace model name below with a valid one from the list above
