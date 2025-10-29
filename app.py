@@ -369,6 +369,17 @@ def n_response(text):
     
     return text
 
+def clean_json_response(text):
+    """Clean JSON response from Gemini"""
+    text = text.strip()
+    if "json" in text[:20].lower():
+        start = text.find('{')
+        end = text.rfind('}')
+        if start != -1 and end != -1:
+            text = text[start:end+1]
+    return text
+
+
 def analyze_medical_condition(user_input, model):
     """Analyze medical condition using Gemini AI"""
     
