@@ -354,7 +354,7 @@ def configure_gemini():
         st.stop()
 
     
-    def n_response(text):
+def n_response(text):
     """Clean JSON response from Gemini"""
     # Remove markdown code blocks
     text = text.strip()
