@@ -17,76 +17,75 @@ st.markdown("""
 <style>
  /* Main app background - light blue */
 .stApp {
-    background-color: #cde6f7;
+    background-color: #cde6f7; /* light blue */
 }
 
-/* Main content area - light blue, black text */
+/* Main content area - light blue background, black text */
 .main {
-    background-color: #cde6f7;
+    background-color: #cde6f7; /* light blue */
     padding: 2rem;
-    color: #000000;
+    color: #000000; /* black text */
 }
 
-/* Ensure ALL text below header is black */
-.main, .main * {
-    color: #000000 !important;
-}
-
-.main p, .main span, .main div, .main li {
-    color: #000000 !important;
-}
-
-.main h1 {
-    color: #000000 !important;
-}
-.main h2, .main h3, .main h4, .main h5, .main h6 {
-    color: #03045E !important;
-}
-
-.main strong, .main b {
-    color: #000000 !important;
-}
-
-/* Sidebar background - blue gradient, white text */
+/* Sidebar background - blue gradient with white text */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #03045E 0%, #0077B6 100%);
+    color: #ffffff !important;
 }
+
 [data-testid="stSidebar"] * {
     color: #ffffff !important;
 }
 
-/* Header and subheader styling - blue gradient, black text */
-.main-header, .sub-header {
+/* Header styling - blue gradient background, black text */
+.main-header {
+    font-size: 2.8rem;
+    font-weight: 700;
     color: #000000 !important;
+    text-align: center;
+    margin-bottom: 0rem;
     background: linear-gradient(135deg, #03045E, #0077B6);
     padding: 2rem;
     border-radius: 1rem 1rem 0 0;
-    font-weight: 700;
-    text-align: center;
+    box-shadow: none !important;
 }
 
-/* Remove disclaimer box if present */
+/* Subheader styling - blue gradient with black text */
+.sub-header {
+    font-size: 1.2rem;
+    color: #000000 !important;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #0077B6, #03045E);
+    padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
+    border-bottom: none;
+}
+
+/* Remove disclaimer box */
 .disclaimer-box {
     display: none !important;
 }
 
-/* Remove backgrounds, borders, shadows from output sections */
+/* Remove backgrounds, borders, shadows in output sections */
 .info-card, .risk-high, .risk-medium, .risk-low, .emergency-alert {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    color: #000000 !important; /* Ensure output text is black */
 }
 
-/* Output headings in dark blue for contrast */
-.risk-high h2, .risk-medium h2, .risk-low h2,
-.info-card h3, .emergency-alert h3 {
-    color: #03045E !important;
+/* Output text in black */
+.risk-high h2, .risk-high p, .risk-high strong,
+.risk-medium h2, .risk-medium p, .risk-medium strong,
+.risk-low h2, .risk-low p, .risk-low strong,
+.info-card h3, .info-card p, .info-card li, .info-card strong,
+.emergency-alert h3, .emergency-alert p, .emergency-alert strong {
+    color: #000000 !important;
 }
 
-/* Buttons with blue gradient, white text */
+/* Buttons with blue gradient and white text */
 .stButton>button {
     background: linear-gradient(135deg, #03045E, #0077B6);
     color: #ffffff !important;
@@ -98,6 +97,7 @@ st.markdown("""
     box-shadow: none !important;
     transition: all 0.3s;
 }
+
 .stButton>button:hover {
     background: linear-gradient(135deg, #0077B6, #03045E);
 }
@@ -109,13 +109,16 @@ st.markdown("""
     background-color: #ffffff;
     color: #000000 !important;
 }
+
 .stTextArea textarea::placeholder {
     color: #999999;
 }
+
 .stTextArea textarea:focus {
     border-color: #03045E;
     box-shadow: 0 0 0 3px rgba(3, 4, 94, 0.3);
 }
+
 .stTextArea label {
     color: #000000 !important;
 }
@@ -133,7 +136,25 @@ st.markdown("""
     background-color: #03045E !important;
     color: #ffffff !important;
 }
+
 .stMultiSelect label {
+    color: #000000 !important;
+}
+
+/* Force all text in main area to black */
+.main, .main * {
+    color: #000000 !important;
+}
+
+.main p, .main span, .main div, .main li {
+    color: #000000 !important;
+}
+
+.main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
+    color: #000000 !important;
+}
+
+.main strong, .main b {
     color: #000000 !important;
 }
 
@@ -149,6 +170,7 @@ st.markdown("""
 .main div[style*="text-align: center"] p {
     color: #000000 !important;
 }
+
 
 
 
