@@ -700,7 +700,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-this is my app.py code
-update this to get the response with out error and explain
+
 
 
