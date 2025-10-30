@@ -15,16 +15,16 @@ st.set_page_config(
 # Custom CSS
 st.markdown("""
 <style>
+ /* Main app background - light blue */
 .stApp {
-    background-color: #cde6f7; /* light blue */
+    background-color: #000000; /* black background */
 }
-
 
 /* Main content area - light blue background, black text */
 .main {
-    background-color: #cde6f7; /* light blue */
+    background-color: #000000; /* black background */
     padding: 2rem;
-    color: #000000; /* black text for contrast */
+    color: #000000; /* black text */
 }
 
 /* Sidebar background - blue gradient with white text */
@@ -33,15 +33,15 @@ st.markdown("""
     color: #ffffff !important;
 }
 
-
 [data-testid="stSidebar"] * {
     color: #ffffff !important;
 }
 
+/* Header styling - blue gradient background, black text */
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
-    color: #ffffff !important;
+    color:   #ffffff !important;
     text-align: center;
     margin-bottom: 0rem;
     background: linear-gradient(135deg, #03045E, #0077B6);
@@ -187,12 +187,6 @@ st.markdown("""
 
 
 
-
-
-
-
-
-
 # Initialize session state
 if 'analysis_complete' not in st.session_state:
     st.session_state.analysis_complete = False
@@ -209,17 +203,18 @@ def configure_gemini():
         genai.configure(api_key=api_key)
 
         models = genai.list_models()
-        # Commented out debug output:
-        # st.write("Available models:", [model.name for model in models])
+        st.write("Available models:", [model.name for model in models])
 
+        # Select a generative model by name pattern
         for model_obj in models:
             model_name = model_obj.name
             if ('flash' in model_name or 'pro' in model_name) and 'gemini' in model_name:
-                # st.info(f"Using model: {model_name}")  # Commented out
+                st.info(f"Using model: {model_name}")
                 return genai.GenerativeModel(model_name)
         
+        # Fallback: use a hardcoded model from your earlier list
         fallback_model = 'gemini-2.5-flash'
-        # st.info(f"Using fallback model: {fallback_model}")  # Commented out
+        st.info(f"Using fallback model: {fallback_model}")
         return genai.GenerativeModel(fallback_model)
 
     except Exception as e:
@@ -255,8 +250,9 @@ def clean_json_response(text):
     return text
 
 
-
 def analyze_medical_condition(user_input, model):
+    # ... your existing code ...
+
     prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
 
     User's condition description: """ + user_input + """
@@ -281,8 +277,7 @@ def analyze_medical_condition(user_input, model):
         )
 
         raw_text = response.text
-        # Comment out debug output:
-        # st.text_area("Raw AI Response (for debugging)", raw_text, height=200)
+        st.text_area("Raw AI Response (for debugging)", raw_text, height=200)
 
         response_text = clean_json_response(raw_text)
         result = json.loads(response_text)
@@ -551,6 +546,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
