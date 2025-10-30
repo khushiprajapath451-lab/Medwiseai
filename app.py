@@ -17,14 +17,15 @@ st.markdown("""
 <style>
  /* Main app background - light blue */
 .stApp {
-    background-color: #000000; /* black background */
+    background-color: #cde6f7; /* light blue */
 }
+
 
 /* Main content area - light blue background, black text */
 .main {
-    background-color: #000000; /* black background */
+    background-color: #cde6f7; /* light blue */
     padding: 2rem;
-    color: #000000; /* black text */
+    color: #000000; /* black text for contrast */
 }
 
 /* Sidebar background - blue gradient with white text */
@@ -33,15 +34,15 @@ st.markdown("""
     color: #ffffff !important;
 }
 
+
 [data-testid="stSidebar"] * {
     color: #ffffff !important;
 }
 
-/* Header styling - blue gradient background, black text */
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
-    color:   #ffffff !important;
+    color: #ffffff !important;
     text-align: center;
     margin-bottom: 0rem;
     background: linear-gradient(135deg, #03045E, #0077B6);
