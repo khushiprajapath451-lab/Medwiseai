@@ -203,18 +203,17 @@ def configure_gemini():
         genai.configure(api_key=api_key)
 
         models = genai.list_models()
-        st.write("Available models:", [model.name for model in models])
+        # Commented out debug output:
+        # st.write("Available models:", [model.name for model in models])
 
-        # Select a generative model by name pattern
         for model_obj in models:
             model_name = model_obj.name
             if ('flash' in model_name or 'pro' in model_name) and 'gemini' in model_name:
-                st.info(f"Using model: {model_name}")
+                # st.info(f"Using model: {model_name}")  # Commented out
                 return genai.GenerativeModel(model_name)
         
-        # Fallback: use a hardcoded model from your earlier list
         fallback_model = 'gemini-2.5-flash'
-        st.info(f"Using fallback model: {fallback_model}")
+        # st.info(f"Using fallback model: {fallback_model}")  # Commented out
         return genai.GenerativeModel(fallback_model)
 
     except Exception as e:
@@ -250,9 +249,8 @@ def clean_json_response(text):
     return text
 
 
-def analyze_medical_condition(user_input, model):
-    # ... your existing code ...
 
+def analyze_medical_condition(user_input, model):
     prompt = """You are a medical awareness assistant helping patients understand their health conditions better. 
 
     User's condition description: """ + user_input + """
@@ -277,7 +275,8 @@ def analyze_medical_condition(user_input, model):
         )
 
         raw_text = response.text
-        st.text_area("Raw AI Response (for debugging)", raw_text, height=200)
+        # Comment out debug output:
+        # st.text_area("Raw AI Response (for debugging)", raw_text, height=200)
 
         response_text = clean_json_response(raw_text)
         result = json.loads(response_text)
