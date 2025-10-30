@@ -17,12 +17,12 @@ st.markdown("""
 <style>
  /* Main app background - light blue */
 .stApp {
-    background-color: #cde6f7; /* light blue */
+    background-color: #000000; /* black background */
 }
 
 /* Main content area - light blue background, black text */
 .main {
-    background-color: #cde6f7; /* light blue */
+    background-color: #000000; /* black background */
     padding: 2rem;
     color: #000000; /* black text */
 }
@@ -145,6 +145,7 @@ st.markdown("""
 .main, .main * {
     color: #000000 !important;
 }
+
 
 .main p, .main span, .main div, .main li {
     color: #000000 !important;
