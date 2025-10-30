@@ -16,16 +16,18 @@ st.set_page_config(
 st.markdown("""
 <style>
  /* Main app background - light blue */
+st.markdown("""
+<style>
+/* Main app background - light blue */
 .stApp {
     background-color: #cde6f7; /* light blue */
 }
 
-
-/* Main content area - light blue background, black text */
+/* Main content area - light blue background, dark blue text */
 .main {
     background-color: #cde6f7; /* light blue */
     padding: 2rem;
-    color: #000000; /* black text for contrast */
+    color: #03045E !important; /* dark blue text */
 }
 
 /* Sidebar background - blue gradient with white text */
@@ -34,11 +36,11 @@ st.markdown("""
     color: #ffffff !important;
 }
 
-
 [data-testid="stSidebar"] * {
     color: #ffffff !important;
 }
 
+/* Header styling - blue gradient background, white text */
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
@@ -51,7 +53,7 @@ st.markdown("""
     box-shadow: none !important;
 }
 
-/* Subheader styling - blue gradient with black text */
+/* Subheader styling - blue gradient, white text */
 .sub-header {
     font-size: 1.2rem;
     color: #ffffff !important;
@@ -77,13 +79,13 @@ st.markdown("""
     margin: 0 !important;
 }
 
-/* Output text in black */
+/* Output text in dark blue */
 .risk-high h2, .risk-high p, .risk-high strong,
 .risk-medium h2, .risk-medium p, .risk-medium strong,
 .risk-low h2, .risk-low p, .risk-low strong,
 .info-card h3, .info-card p, .info-card li, .info-card strong,
 .emergency-alert h3, .emergency-alert p, .emergency-alert strong {
-    color: #000000 !important;
+    color: #03045E !important;
 }
 
 /* Buttons with blue gradient and white text */
@@ -128,7 +130,7 @@ st.markdown("""
 .streamlit-expanderHeader {
     background: transparent !important;
     border: 1px solid #0077B6;
-    color: #000000 !important;
+    color: #03045E !important;
     border-radius: 0.5rem;
 }
 
@@ -139,25 +141,24 @@ st.markdown("""
 }
 
 .stMultiSelect label {
-    color: #000000 !important;
+    color: #03045E !important;
 }
 
-/* Force all text in main area to black */
+/* Force all text in main area to dark blue */
 .main, .main * {
-    color: #000000 !important;
+    color: #03045E !important;
 }
-
 
 .main p, .main span, .main div, .main li {
-    color: #000000 !important;
+    color: #03045E !important;
 }
 
 .main h1, .main h2, .main h3, .main h4, .main h5, .main h6 {
-    color: #000000 !important;
+    color: #03045E !important;
 }
 
 .main strong, .main b {
-    color: #000000 !important;
+    color: #03045E !important;
 }
 
 /* Horizontal line - blue */
@@ -168,10 +169,13 @@ st.markdown("""
     margin: 2rem 0;
 }
 
-/* Footer text in black */
+/* Footer text in dark blue */
 .main div[style*="text-align: center"] p {
-    color: #000000 !important;
+    color: #03045E !important;
 }
+</style>
+""", unsafe_allow_html=True)
+
 
 
 
