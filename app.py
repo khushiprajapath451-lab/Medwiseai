@@ -41,7 +41,7 @@ st.markdown("""
 .main-header {
     font-size: 2.8rem;
     font-weight: 700;
-    color: #000000 !important;
+    color:   #ffffff !important;
     text-align: center;
     margin-bottom: 0rem;
     background: linear-gradient(135deg, #03045E, #0077B6);
@@ -53,7 +53,7 @@ st.markdown("""
 /* Subheader styling - blue gradient with black text */
 .sub-header {
     font-size: 1.2rem;
-    color: #000000 !important;
+    color: #ffffff !important;
     text-align: center;
     margin-bottom: 2rem;
     background: linear-gradient(135deg, #0077B6, #03045E);
