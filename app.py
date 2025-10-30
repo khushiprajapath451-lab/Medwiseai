@@ -13,9 +13,7 @@ st.set_page_config(
 
 # Custom CSS
 # Custom CSS
-st.markdown("""
-<style>
- /* Main app background - light blue */
+
 st.markdown("""
 <style>
 /* Main app background - light blue */
@@ -180,8 +178,7 @@ st.markdown("""
 
 
 
-</style>
-""", unsafe_allow_html=True)
+
 
 
 
